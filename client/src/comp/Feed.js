@@ -8,9 +8,11 @@ import React from 'react'
 import {posts} from "../service/api"
 import {getPosts} from "../service/api"
 import Load from './Load';
+import Post from './Post'
 
 import ReactDOM from 'react-dom/client';
 export default function Feed(props){
+  console.log(props)
   var i=0;
   const d=new Date().toLocaleString()
   const [post,setPost]=React.useState({"time":d,"user":props.props.email})
@@ -54,7 +56,9 @@ const getAllPost=async()=>{
     let response=await getPosts();
 
     setFposts(response.data)
-    console.log(response)
+    const found = response.data.find(element => element._id==="640c9bfa9e9227d0fbe13f24");
+    console.log(found)
+    console.log(response.data)
     root.render(
       <>
      
@@ -62,6 +66,7 @@ const getAllPost=async()=>{
     );
     console.log(fpost)
 }
+
     return(
         <div>
           <div id="load">
@@ -109,9 +114,9 @@ const getAllPost=async()=>{
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{item.user}</h2>
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.head}</h1>
-                  <p className="leading-relaxed mb-3">{item.body}</p>
+                  <p className="leading-relaxed mb-3">{item.body.substring(0,200)}</p>
                   <div className="flex items-center flex-wrap ">
-                    <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" id={item._id} onClick={()=>props.see(item)}>See More
                       <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5l7 7-7 7" />

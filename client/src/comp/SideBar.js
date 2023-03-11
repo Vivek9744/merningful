@@ -29,6 +29,7 @@ import SignI from './SignI'
 import User from './User'
 import Message from './Message';
 import Load from './Load';
+import Post from './Post'
 const drawerWidth = 240;
 
 
@@ -118,7 +119,7 @@ export default function SideBar(props) {
     );
     
     root.render(
-      <Feed props={props.Img}/>
+      <Feed see={handleSeeMore} props={props.Img}/>
     );
 
   }
@@ -178,6 +179,20 @@ export default function SideBar(props) {
     raman
     <Message/></>
     );
+  }
+  function handleSeeMore(event){
+   
+    const root = ReactDOM.createRoot(
+      document.getElementById('main')
+    );
+    
+    root.render(
+      <>
+      <Post data={event}/>
+      </>
+    );
+    
+  
   }
 
   return (
