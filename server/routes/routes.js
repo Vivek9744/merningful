@@ -3,6 +3,7 @@ const router = express.Router()
 const users = require('../models/userSchema')
 const posts = require('../models/postSchema')
 const messages= require('../models/messageSchema')
+var validator = require("email-validator");
 /*
 router.get("/",(req,res)=>{
     console.log("Connect")
@@ -11,8 +12,13 @@ router.get("/",(req,res)=>{
 
 router.post('/register', async (req, res) => {
     console.log(req.body);
+    var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
     const { name, email,given_name,picture,token,family_name } = req.body
+
+    var m=1;
+   
     console.log(name)
+    if(validator.validate(email)){
     try {
         const preuser = await users.findOne({ email: email })
         console.log(preuser)
@@ -30,7 +36,10 @@ router.post('/register', async (req, res) => {
         }
     } catch (error) {
         res.status(404).send(error)
+    }}else{
+        res.status(404).send("Email Not valid")
     }
+
 })
 
 router.post('/isUser', async (req, res) => {
