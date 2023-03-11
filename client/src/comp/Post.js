@@ -8,6 +8,7 @@
       <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
        {props.data.head}
       </h1>
+      <h4>{props.data.user}</h4><br/>
       <p className="mb-8 leading-relaxed">
         {props.data.body}
       </p>

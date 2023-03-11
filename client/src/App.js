@@ -16,6 +16,7 @@ import SignU from './comp/SignU'
 import ReactDOM from 'react-dom/client';
 import Load from'./comp/Load'
 import Feed from './comp/Feed'
+import Post from './comp/Post'
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 
@@ -99,7 +100,7 @@ await addUser(k)
         
         root.render(
           <>
-          <Feed props={Img}/>
+          <Feed see={handleSeeMore} props={Img}/>
           </>
         );
        
@@ -169,7 +170,7 @@ async function handleSignIn(user){
     
     root.render(
       <>
-      <Feed props={Img}/>
+      <Feed see={handleSeeMore} props={Img}/>
       </>
     );
    }
@@ -177,6 +178,20 @@ async function handleSignIn(user){
    console.log(load)
   
 }
+function handleSeeMore(event){
+   
+    const root = ReactDOM.createRoot(
+      document.getElementById('main')
+    );
+    
+    root.render(
+      <>
+      <Post data={event}/>
+      </>
+    );
+    
+  
+  }
 
  
   return (
