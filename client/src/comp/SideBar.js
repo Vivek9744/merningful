@@ -28,7 +28,9 @@ import SignU from './SignU'
 import SignI from './SignI'
 import User from './User'
 import Message from './Message';
+import Load from './Load';
 const drawerWidth = 240;
+
 
 
 const openedMixin = (theme) => ({
@@ -150,7 +152,7 @@ export default function SideBar(props) {
     );
     
     root.render(
-      <SignI props={props.sifun}/>
+      <SignI props={props.sifun} load={props.load}/>
     );
 
 
@@ -473,6 +475,8 @@ export default function SideBar(props) {
        <SideBar1 log={props.log}Img={props.Img} />
        </div>
       </Box>
+ 
     </Box>
+
   );
 }

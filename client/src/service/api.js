@@ -1,5 +1,7 @@
 import axios from "axios"
-const URL="http://localhost:8003/"
+const URL="http://localhost:8003"
+
+//const URL="https://a1-w3yj.onrender.com"
 export const addUser=async (data)=>{
     try{
         return await axios.post(`${URL}/register`,data)

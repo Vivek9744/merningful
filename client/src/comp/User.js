@@ -2,6 +2,7 @@ import {getUsers} from "../service/api"
 import React from "react"
 import ReactDOM from 'react-dom/client';
 import Message from './Message'
+import Load from './Load'
 export default function User(props){
     const [users,setUsers]=React.useState([])
     React.useEffect(()=>{
@@ -9,8 +10,22 @@ export default function User(props){
     },[])
     
     const getAllUsers=async()=>{
+      const root = ReactDOM.createRoot(
+        document.getElementById('load')
+      );
+      
+      root.render(
+        <>
+        <Load/>
+        </>
+      );
         let response=await getUsers();
         setUsers(response.data)
+        root.render(
+          <>
+          
+          </>
+        );
         console.log(response)
         console.log(users)
     }
@@ -30,6 +45,7 @@ export default function User(props){
     Raman
     
     <section className="text-gray-600 body-font">
+      <div id="load"></div>
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -mx-4 -mb-10 text-center">
             {

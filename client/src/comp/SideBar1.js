@@ -1,4 +1,5 @@
 import jwt_decode from 'jwt-decode'
+import Load from './Load'
 import React, { useCallback } from "react"
 export default function SideBar1(props){
    console.log(props.log)
@@ -7,7 +8,7 @@ return(
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <h2 className="sm:text-3xl text-2xl text-white font-medium title-font mb-2 md:w-2/5">Welcome to College Connect <br/>  <p className="leading-relaxed text-base">Start interacting with your batchmates and seniors.</p></h2>
           <div className="md:w-3/5 md:pl-6">
-        
+          
             <div className="flex md:mt-4 mt-6">
            <div id="hide">
               <button id="sign1" className="inline-flex text-white bg-blue-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded">Sign In</button></div>

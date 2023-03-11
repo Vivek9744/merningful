@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 import NavBar from './NavBar'
 import {addMessage} from "../service/api"
 import { getMessages } from '../service/api';
-
+import Load from './Load'
+import ReactDOM from 'react-dom/client';
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 //const socket=io.connect("http://localhost:8000")
@@ -72,9 +73,22 @@ const [m,setM]=React.useState([])
             "time":d
           };
       console.log(data)
+      const root = ReactDOM.createRoot(
+        document.getElementById('load')
+      );
+      
+      root.render(
+        <>
+        <Load/>
+        </>
+      );
       const code= await getMessages(p)
       console.log(code.response.data)
-
+      root.render(
+        <>
+       
+        </>
+      );
    
      
       setM(code.response.data.reverse())
@@ -111,7 +125,7 @@ const [m,setM]=React.useState([])
        
     <div class="container mx-auto shadow-lg rounded-lg">
           
-       
+      
         
         <div class="flex flex-row justify-between bg-white">
          
@@ -128,7 +142,7 @@ const [m,setM]=React.useState([])
               
         
 
-              
+            <div id="load"></div>
               {<h1>{m.map(item=>{
                 if(item.from!==props.from){
         return(

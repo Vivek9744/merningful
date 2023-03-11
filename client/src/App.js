@@ -14,12 +14,16 @@ import {addUser} from "./service/api"
 import {isUser} from "./service/api"
 import SignU from './comp/SignU'
 import ReactDOM from 'react-dom/client';
+import Load from'./comp/Load'
+import Feed from './comp/Feed'
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 
 const socket=io.connect("chatrmn.eu-4.evennode.com")
 
 function App() {
+  const [load,setLoad]=React.useState("0")
+  
   var userObject
   const [Img,setImg]=React.useState({})
   async function handleCallbackResponse(response){
@@ -63,6 +67,15 @@ await addUser(k)
       document.getElementById("hide").hidden=false;
   }
   async function handleSignUp(user){
+    const root = ReactDOM.createRoot(
+      document.getElementById('mess')
+    );
+    
+    root.render(
+      <>
+      <Load/>
+      </>
+    );
     const k={
         "token":user.token,
       "given_name":user.given_name,
@@ -80,12 +93,47 @@ await addUser(k)
      if(Object.keys(code.response.data).length===0){
         console.log("submitted")
         setImg(k)
-      
+        const root = ReactDOM.createRoot(
+          document.getElementById('main')
+        );
+        
+        root.render(
+          <>
+          <Feed props={Img}/>
+          </>
+        );
        
-     }else
+     }else{
     console.log("not Submitted")
+    const root = ReactDOM.createRoot(
+      document.getElementById('mess')
+    );
+    
+    root.render(
+      <>
+      Error
+      </>
+    );}
+}
+function hand(){
+ 
+  console.log(load)
 }
 async function handleSignIn(user){
+  const root = ReactDOM.createRoot(
+    document.getElementById('mess')
+  );
+  
+  root.render(
+    <>
+    <Load/>
+    </>
+  );
+  console.log("hhh")
+  setLoad("1")
+  console.log(load)
+  console.log("raman")
+
   const k={
       "token":user.token,
     "given_name":"l",
@@ -102,23 +150,31 @@ async function handleSignIn(user){
 
    if((code.response.data)===0){
       console.log("Please check your credential")
-    
+      const root = ReactDOM.createRoot(
+        document.getElementById('mess')
+      );
+      
+      root.render(
+        <>
+        Error
+        </>
+      );
      
    }else{
     setImg(code.response.data)
     
     const root = ReactDOM.createRoot(
-      document.getElementById('mess')
+      document.getElementById('main')
     );
     
     root.render(
       <>
-      Please check your credentials
+      <Feed props={Img}/>
       </>
     );
    }
- 
-  
+
+   console.log(load)
   
 }
 
@@ -126,10 +182,13 @@ async function handleSignIn(user){
   return (
     <div className="App">
  <div id="home">
-     <SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} log={Log}/>
+
+     <SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>
      </div>
      <div id="sign"></div>
-     
+ 
+     <button onClick={hand}>Ramna</button>
+ 
     </div>
   );
 }

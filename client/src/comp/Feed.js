@@ -7,7 +7,9 @@ import Stack from '@mui/material/Stack';
 import React from 'react'
 import {posts} from "../service/api"
 import {getPosts} from "../service/api"
+import Load from './Load';
 
+import ReactDOM from 'react-dom/client';
 export default function Feed(props){
   var i=0;
   const d=new Date().toLocaleString()
@@ -29,22 +31,42 @@ console.log(post)
 
   }
 async function handlePost(){
+  
   const p=post;
   await posts(p)
 }
 const [fpost,setFposts]=React.useState([])
 React.useEffect(()=>{
+  
 getAllPost()
 },[])
 
 const getAllPost=async()=>{
+  const root = ReactDOM.createRoot(
+    document.getElementById('load')
+  );
+  
+  root.render(
+    <>
+    <Load/>
+    </>
+  );
     let response=await getPosts();
+
     setFposts(response.data)
     console.log(response)
+    root.render(
+      <>
+     
+      </>
+    );
     console.log(fpost)
 }
     return(
         <div>
+          <div id="load">
+            
+          </div>
            <div style={{fontSize:20}}> Share a new post in Community</div>
             <div>
         <TextField

@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Load from './Load'
 
 function Copyright(props) {
   return (
@@ -29,6 +30,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn(props) {
+  console.log(props.Load)
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -50,7 +53,9 @@ export default function SignIn(props) {
     })
     console.log(user)
   }
-
+function func(){
+  console.log("cbdhbcdbhdc")
+}
 
   return (
     <ThemeProvider theme={theme}>
@@ -114,9 +119,11 @@ export default function SignIn(props) {
               </Grid>
             </Grid>
           </Box>
+          <div id="mess"></div>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+    
     </ThemeProvider>
   );
 }
