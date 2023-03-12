@@ -30,6 +30,7 @@ import User from './User'
 import Message from './Message';
 import Load from './Load';
 import Post from './Post'
+import About from './About'
 import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -184,7 +185,7 @@ export default function SideBar(props) {
     root.render(
       <>
   
-    <Message/></>
+    <About/></>
     );
   }
   function handleSeeMore(event){

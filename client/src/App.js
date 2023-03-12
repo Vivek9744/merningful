@@ -83,7 +83,8 @@ root.render(
   },[])
   function Log(){
       setImg({})
-      document.getElementById("hide").hidden=false;
+
+      navigate("/")
   }
   async function handleSignUp(user){
     const root = ReactDOM.createRoot(
@@ -102,7 +103,7 @@ root.render(
       
       "name":`${user.given_name}${user.family_name}`,
       "email":user.email,
-      "picture":"gfgh",
+      "picture":"https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       
       }
       console.log(k)
@@ -231,7 +232,7 @@ function handleSeeMore(event){
      </div>
      <div id="sign"></div>
  
-     <button onClick={hand}>Ramna</button>
+   
  
     </div>
   );

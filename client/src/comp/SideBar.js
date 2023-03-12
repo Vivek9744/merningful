@@ -30,6 +30,7 @@ import User from './User'
 import Message from './Message';
 import Load from './Load';
 import Post from './Post'
+import About from './About'
 import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
@@ -184,7 +185,7 @@ export default function SideBar(props) {
     root.render(
       <>
   
-    <Message/></>
+    <About/></>
     );
   }
   function handleSeeMore(event){
@@ -398,8 +399,9 @@ export default function SideBar(props) {
 <List>
 
        
-<ListItem key={"Sign Out"} disablePadding sx={{ display: 'block' }}>
+<ListItem onClick={props.log}key={"Sign Out"} disablePadding sx={{ display: 'block' }}>
   <ListItemButton
+  onClick={props.log}
     sx={{
       minHeight: 48,
       justifyContent: open ? 'initial' : 'center',
@@ -407,6 +409,7 @@ export default function SideBar(props) {
     }}
   >
     <ListItemIcon 
+    onClick={props.log}
       sx={{
         minWidth: 0,
         mr: open ? 3 : 'auto',
@@ -419,7 +422,7 @@ export default function SideBar(props) {
       
      
     </ListItemIcon>
-    <ListItemText primary={"Sign Out"} sx={{ opacity: open ? 1 : 0 }} />
+    <ListItemText  onClick={props.log} primary={"Sign Out"} sx={{ opacity: open ? 1 : 0 }} />
   </ListItemButton>
 </ListItem>
 
@@ -459,7 +462,7 @@ export default function SideBar(props) {
 <List>
 
        
-<ListItem key={"About Us"} disablePadding sx={{ display: 'block' }}>
+<ListItem onClick={handleAbout} key={"About Us"} disablePadding sx={{ display: 'block' }}>
   <ListItemButton
     sx={{
       minHeight: 48,
@@ -467,7 +470,7 @@ export default function SideBar(props) {
       px: 2.5,
     }}
   >
-    <ListItemIcon 
+    <ListItemIcon onClick={handleAbout}
       sx={{
         minWidth: 0,
         mr: open ? 3 : 'auto',
@@ -480,7 +483,7 @@ export default function SideBar(props) {
       
      
     </ListItemIcon>
-    <ListItemText primary={"About Us"} sx={{ opacity: open ? 1 : 0 }} />
+    <ListItemText onClick={handleAbout} primary={"About Us"} sx={{ opacity: open ? 1 : 0 }} />
   </ListItemButton>
 </ListItem>
 
