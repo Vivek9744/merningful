@@ -234,7 +234,7 @@ export default function SideBar(props) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        { Object.keys(props.Img).length===0 ?
+       
         <div>
         <List>
 
@@ -330,172 +330,14 @@ export default function SideBar(props) {
 </List>
       </div>
       
-        :
-
-        <div>
-        <List>
-
-       
-          <ListItem key={"Profile"} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon onClick={ch}
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                  
-                {<img style={{height:"40px"}} src={props.Img.picture}></img>}
-               
-                
-               
-              </ListItemIcon>
-              <ListItemText primary={"Profile"} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-       
-        
-      </List>
-      
-      <List>
-
-       
-<ListItem key={"Feed"} disablePadding sx={{ display: 'block' }} onClick={Fee}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/feed.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Feed"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-
-<List>
-
-       
-<ListItem key={"Sign Out"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/user.jpg")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Sign Out"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-<List>
-
-       
-<ListItem onClick={Friends} key={"Friends"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-  onClick={Friends}
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon onClick={Friends} 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/group.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Friends"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-<List>
-
-       
-<ListItem key={"About Us"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/about.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"About Us"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-      </div>
-      }
-        <Divider />
+              <Divider />
        
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-      
-        <div id="main"> {Object.keys(props.Img).length===0  ? <SideBar1 log={props.log}Img={props.Img} />:<Feed see={handleSeeMore} props={props.Img}/>}
-      
+        
+        <div id="main"> 
+       <SideBar1 log={props.log}Img={props.Img} />
        </div>
       </Box>
  

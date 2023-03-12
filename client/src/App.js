@@ -17,12 +17,17 @@ import ReactDOM from 'react-dom/client';
 import Load from'./comp/Load'
 import Feed from './comp/Feed'
 import Post from './comp/Post'
+import {Router, Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SideBarH from './comp/SidebarH'
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
+
 
 const socket=io.connect("chatrmn.eu-4.evennode.com")
 
 function App() {
+  const navigate = useNavigate();
   const [load,setLoad]=React.useState("0")
   
   var userObject
@@ -32,6 +37,10 @@ console.log(response.credential)
 userObject=jwt_decode(response.credential)
 console.log(userObject)
 setImg(userObject)
+
+navigate("/dashboard")
+
+
 
 
 document.getElementById("hide").hidden=true;
@@ -48,6 +57,15 @@ const k={
 }
 console.log(k)
 await addUser(k)
+const root = ReactDOM.createRoot(
+  document.getElementById('main')
+);
+
+root.render(
+  <>
+  <Feed see={handleSeeMore} props={Img}/>
+  </>
+);
   }
   React.useEffect(()=>{
     /*global google*/
@@ -94,6 +112,7 @@ await addUser(k)
      if(Object.keys(code.response.data).length===0){
         console.log("submitted")
         setImg(k)
+        navigate("/dashboard")
         const root = ReactDOM.createRoot(
           document.getElementById('main')
         );
@@ -103,6 +122,7 @@ await addUser(k)
           <Feed see={handleSeeMore} props={Img}/>
           </>
         );
+      
        
      }else{
     console.log("not Submitted")
@@ -121,6 +141,7 @@ function hand(){
   console.log(load)
 }
 async function handleSignIn(user){
+
   const root = ReactDOM.createRoot(
     document.getElementById('mess')
   );
@@ -163,7 +184,7 @@ async function handleSignIn(user){
      
    }else{
     setImg(code.response.data)
-    
+    navigate("/dashboard")
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
@@ -176,6 +197,8 @@ async function handleSignIn(user){
    }
 
    console.log(load)
+
+  
   
 }
 function handleSeeMore(event){
@@ -198,7 +221,13 @@ function handleSeeMore(event){
     <div className="App">
  <div id="home">
 
-     <SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>
+  
+    
+      <Routes>
+            <Route path="/" element={<SideBarH Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+        <Route path="/dashboard" element={<SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+      </Routes>
+
      </div>
      <div id="sign"></div>
  

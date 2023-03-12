@@ -4,6 +4,7 @@ import React, { useCallback } from "react"
 export default function SideBar1(props){
    console.log(props.log)
 return(
+  
     <section className="text-gray-400 bg-gray-900 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
           <h2 className="sm:text-3xl text-2xl text-white font-medium title-font mb-2 md:w-2/5">Welcome to College Connect <br/>  <p className="leading-relaxed text-base">Start interacting with your batchmates and seniors.</p></h2>
