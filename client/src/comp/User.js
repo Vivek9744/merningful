@@ -3,6 +3,13 @@ import React from "react"
 import ReactDOM from 'react-dom/client';
 import Message from './Message'
 import Load from './Load'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+import {searchUser} from '../service/api'
 export default function User(props){
     const [users,setUsers]=React.useState([])
     React.useEffect(()=>{
@@ -40,13 +47,57 @@ export default function User(props){
       <Message from={props.email} to={event.target.id}/></>
       );
     }
+    const [search,setSearch]=React.useState({ "name":"","email":"","given_name":"","picture":"","token":"","family_name":"" })
+    function handleChange(event){
+setSearch(old=>{
+  return(
+    {
+      ...old,
+      [event.target.id]:event.target.value
+    }
+  )
+})
+console.log(search)
+
+    }
+   async function handleSearch(){
+      const code= await searchUser(search)
+      setUsers(code.response.data)
+      const root = ReactDOM.createRoot(
+        document.getElementById('search')
+      );
+      
+      root.render(
+        <>
+        Search Results
+        </>
+      );
+      console.log(code)
+    }
   return(
     <>
-    Raman
-    
+   
+    <TextField
+        onChange={handleChange}
+          id="name"
+          label="Search User"
+          multiline
+          maxRows={4}
+          defaultValue=""
+        />
+       
+       
+        <Stack direction="row" spacing={2}>
+      
+      <Button onClick={handleSearch} variant="contained" endIcon={<SendIcon />}>
+        Search
+      </Button>
+    </Stack>
     <section className="text-gray-600 body-font">
       <div id="load"></div>
+      <div id="search"></div>
         <div className="container px-5 py-24 mx-auto">
+          
           <div className="flex flex-wrap -mx-4 -mb-10 text-center">
             {
                 users.map(item=>{

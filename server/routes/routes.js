@@ -143,5 +143,26 @@ router.post('/fetchMessage', async (req, res) => {
         res.status(404).send(error)
     }
 })
+router.post('/search', async (req, res) => {
+    console.log(req.body);
+   
+    const { name, email,given_name,picture,token,family_name } = req.body
 
+
+   
+  
+    try {
+        const preuser = await users.find({name:{$regex:`${name}`,$options:"$i"}})
+        console.log(preuser)
+        if(preuser){
+            res.status(404).send(preuser)
+        }
+        else{
+            res.status(404).send("No user Found")
+        }
+    } catch (error) {
+        res.status(404).send(error)
+    }
+
+})
 module.exports = router;

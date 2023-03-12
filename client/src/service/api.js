@@ -66,3 +66,12 @@ export const isUser=async (data)=>{
         return(error)
     }
 }
+export const searchUser=async (data)=>{
+    try{
+        return await axios.post(`${URL}/search`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
