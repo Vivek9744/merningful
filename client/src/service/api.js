@@ -102,3 +102,12 @@ export const isLiked=async (data)=>{
         return(error)
     }
 }
+export const searchPost=async (data)=>{
+    try{
+        return await axios.post(`${URL}/searchPost`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}

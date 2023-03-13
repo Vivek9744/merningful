@@ -267,5 +267,27 @@ router.get('/fetchComments', async (req, res) => {
     }
 
 })
+router.post('/searchPost', async (req, res) => {
+    console.log(req.body);
+   
+    const { head} = req.body
+
+
+   
+  
+    try {
+        const preuser = await feed1.find({head:{$regex:`${head}`,$options:"$i"}})
+        console.log(preuser)
+        if(preuser){
+            res.status(404).send(preuser)
+        }
+        else{
+            res.status(404).send("No user Found")
+        }
+    } catch (error) {
+        res.status(404).send(error)
+    }
+
+})
 
 module.exports = router;

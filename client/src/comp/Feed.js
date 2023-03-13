@@ -12,6 +12,7 @@ import Post from './Post'
 import Commnet from './Comment'
 import { addLike } from '../service/api';
 import { isLiked } from '../service/api';
+import { searchPost } from '../service/api';
 
 import ReactDOM from 'react-dom/client';
 export default function Feed(props){
@@ -92,6 +93,13 @@ async function handleLike(event){
 function load(){
   console.log("Loaded")
 }
+async function handleSearchPost(){
+  const code= await searchPost(post)
+  console.log(code)
+ setFposts(code.response.data)
+ 
+  
+}
     return(
         <div>
           <div id="load">
@@ -120,6 +128,23 @@ function load(){
       
       <Button onClick={handlePost} variant="contained" endIcon={<SendIcon />}>
         Send
+      </Button>
+    </Stack>
+    <hr/>
+    <TextField
+        onChange={handleChange}
+          id="head"
+          label="Post Heading"
+          multiline
+          maxRows={4}
+          defaultValue=""
+        />
+       
+       
+        <Stack direction="row" spacing={2}>
+      
+      <Button onClick={handleSearchPost} variant="contained" endIcon={<SendIcon />}>
+        Search
       </Button>
     </Stack>
       </div>
