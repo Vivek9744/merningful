@@ -72,12 +72,12 @@ router.post('/isUser', async (req, res) => {
 })
 router.post('/post', async (req, res) => {
     console.log(req.body);
-    const { head, body ,time,user,likes,comments} = req.body
+    const { head, body ,hashtag,time,user,likes,comments} = req.body
     console.log(head)
     try {
         
             const feed=new feed1({
-                head, body,time,user,likes,comments
+                head, body,time,user,likes,comments,hashtag
 
             })
             await feed.save();
@@ -176,12 +176,12 @@ router.post('/search', async (req, res) => {
 })
 router.post('/comment', async (req, res) => {
     console.log(req.body);
-    const {  head, body ,time,user,likes,comments} = req.body
+    const {  head, body ,hashtag,time,user,likes,comments} = req.body
     console.log(likes)
     try {
         
             const feed=new feed1({
-                head, body ,time,user,likes,comments
+                head, body ,time,user,likes,comments,hashtag
 
             })
             await feed.save();
@@ -276,7 +276,7 @@ router.post('/searchPost', async (req, res) => {
    
   
     try {
-        const preuser = await feed1.find({head:{$regex:`${head}`,$options:"$i"}})
+        const preuser = await feed1.find({hashtag:{$regex:`${head}`,$options:"$i"}})
         console.log(preuser)
         if(preuser){
             res.status(404).send(preuser)

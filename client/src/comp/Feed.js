@@ -16,6 +16,7 @@ import { searchPost } from '../service/api';
 
 import ReactDOM from 'react-dom/client';
 export default function Feed(props){
+  console.log("Mmmm #yummy #donut at #CZ".match(/#\w+/g))
   console.log(props)
   var i=0;
   const d=new Date().toLocaleString()
@@ -38,7 +39,9 @@ console.log(post)
   }
 async function handlePost(){
   
-  const p=post;
+  const p={...post,
+  "hashtag":post.body.match(/#\w+/g)};
+  console.log(p)
   await posts(p)
 }
 const [fpost,setFposts]=React.useState([])
@@ -105,7 +108,8 @@ async function handleSearchPost(){
           <div id="load">
             
           </div>
-           <div style={{fontSize:20}}> Share a new post in Community</div>
+           <div style={{fontSize:20}}> Share a new post in Community </div>
+           <h5>Use hashtags to appear in search results</h5>
             <div>
         <TextField
         onChange={handleChange}

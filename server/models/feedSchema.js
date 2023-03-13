@@ -36,6 +36,9 @@ const postSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    hashtag:{
+        type:Array
+    },
     likes:{
         type:Array
     },
