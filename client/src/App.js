@@ -59,7 +59,16 @@ const k={
 
 }
 console.log(k)
-await addUser(k)
+await addUser({
+  "token":userObject.aud,
+"given_name":userObject.given_name,
+"family_name":userObject.family_name,
+
+"name":userObject.name,
+"email":userObject.email,
+"picture":userObject.picture,
+
+})
 const root = ReactDOM.createRoot(
   document.getElementById('main')
 );
@@ -230,10 +239,9 @@ function handleSeeMore(event){
       <Routes>
             <Route path="/" element={<SideBarH Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
         <Route path="/dashboard" element={<SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
-      </Routes>
 
-     </div>
-     <div>{Object.keys(Img).length===0 &&<LoginSocialFacebook
+      </Routes><button>
+{Object.keys(Img).length===0 &&<LoginSocialFacebook
      appId="1832325630476306"
      onResolve={async(response)=>{
       console.log(response);
@@ -280,7 +288,9 @@ console.log(Img)
       <FacebookLoginButton/>
 
     
-      </LoginSocialFacebook>}</div>
+      </LoginSocialFacebook>}</button>
+     </div>
+     <div></div>
      <div id="sign"></div>
  
    
