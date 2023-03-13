@@ -75,3 +75,30 @@ export const searchUser=async (data)=>{
         return error
     }
 }
+export const addComment=async (data)=>{
+    try{
+        return await axios.patch(`${URL}/updateComment`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
+export const addLike=async (data)=>{
+    try{
+        return await axios.patch(`${URL}/updateLikes`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
+export const isLiked=async (data)=>{
+    try{
+        return await axios.post(`${URL}/likeStatus`,data)
+
+    }catch(error){
+        console.log("Error message",error)
+        return(error)
+    }
+}

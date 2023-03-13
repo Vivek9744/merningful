@@ -203,14 +203,14 @@ async function handleSignIn(user){
   
 }
 function handleSeeMore(event){
-   
+   console.log("djdhh")
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
-    
+    console.log(Img)
     root.render(
       <>
-      <Post data={event}/>
+      <Post user={Img} data={event}/>
       </>
     );
     

@@ -189,19 +189,23 @@ export default function SideBar(props) {
     );
   }
   function handleSeeMore(event){
-   
+  
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
     
     root.render(
       <>
-      <Post data={event}/>
+      <Post user={props.Img}data={event}/>
       </>
     );
     
   
   }
+  async function handleLike(event){
+   // await addLike({"id":event,"user":props.props.email})
+    
+}
 
   return (
     <Box sx={{ display: 'flex'}}>

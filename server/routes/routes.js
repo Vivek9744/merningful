@@ -4,6 +4,7 @@ const users = require('../models/userSchema')
 const posts = require('../models/postSchema')
 const messages= require('../models/messageSchema')
 var validator = require("email-validator");
+const feed1=require("../models/feedSchema")
 /*
 router.get("/",(req,res)=>{
     console.log("Connect")
@@ -63,17 +64,17 @@ router.post('/isUser', async (req, res) => {
 })
 router.post('/post', async (req, res) => {
     console.log(req.body);
-    const { head, body ,time,user} = req.body
+    const { head, body ,time,user,likes,comments} = req.body
     console.log(head)
     try {
         
-            const post=new posts({
-                head, body,time,user
+            const feed=new feed1({
+                head, body,time,user,likes,comments
 
             })
-            await post.save();
-            response.status(201).json(post)
-            console.log(post)
+            await feed.save();
+            response.status(201).json(feed)
+            console.log(feed)
         
     } catch (error) {
         res.status(404).send(error)
@@ -81,9 +82,9 @@ router.post('/post', async (req, res) => {
 })
 router.get('/fetchPosts', async (req, res) => {
     try{
-        const post1 = await posts.find({})
-        res.status(200).json(post1)
-        console.log(post1)
+        const feed = await feed1.find({})
+        res.status(200).json(feed)
+        console.log(feed)
         console.log("Raman")
 
     }catch(error){
@@ -165,4 +166,98 @@ router.post('/search', async (req, res) => {
     }
 
 })
+router.post('/comment', async (req, res) => {
+    console.log(req.body);
+    const {  head, body ,time,user,likes,comments} = req.body
+    console.log(likes)
+    try {
+        
+            const feed=new feed1({
+                head, body ,time,user,likes,comments
+
+            })
+            await feed.save();
+            response.status(201).json(feed)
+            console.log(feed)
+        
+    } catch (error) {
+        res.status(404).send(error)
+    }
+})
+router.patch('/updateComment', async (req, res) => {
+    console.log(req.body);
+    const { id,user,time,comments} = req.body
+    console.log(id)
+    try {
+        
+           
+            const upd=await feed1.findByIdAndUpdate(id,{$push:{comments:{content:comments,time:time,user:user}}},{new:true});
+            //const upd=await comment1.findByIdAndUpdate('640def63faa537f85aac2e28',{ $inc: {likes: 1 }},{new:true});
+            response.status(201).json(comment)
+            console.log(upd)
+        
+    } catch (error) {
+        res.status(404).send(error)
+    }
+})
+router.patch('/updateLikes', async (req, res) => {
+    console.log(req.body);
+    const { id,user} = req.body
+    console.log(id)
+    try {
+           const feed=await feed1.find({ _id:id,likes:user })
+         //  console.log(feed)
+           if(feed.length===0){
+            const upd=await feed1.findByIdAndUpdate(id,{$push:{likes:user}},{new:true});
+            //const upd=await comment1.findByIdAndUpdate('640def63faa537f85aac2e28',{ $inc: {likes: 1 }},{new:true});
+            response.status(201).json(feed)
+            //console.log(upd)}
+        
+    }else{
+        const upd=await feed1.findByIdAndUpdate(id,{$pull:{likes:user}},{new:true});
+            console.log("You have already liked")
+            response.status(404).send("You have already liked")
+
+           }} catch (error) {
+        res.status(404).send(error)
+    }
+})
+router.patch('/likeStatus', async (req, res) => {
+    console.log(req.body);
+    const { id,user} = req.body
+    console.log(id)
+    try {
+           const feed=await feed1.find({ _id:id,likes:user })
+         //  console.log(feed)
+           if(feed.length===0){
+            //const upd=await feed1.findByIdAndUpdate(id,{$push:{likes:user}},{new:true});
+            //const upd=await comment1.findByIdAndUpdate('640def63faa537f85aac2e28',{ $inc: {likes: 1 }},{new:true});
+            response.status(201).json("0")
+            //console.log(upd)}
+        
+    }else{
+       // const upd=await feed1.findByIdAndUpdate(id,{$pull:{likes:user}},{new:true});
+           // console.log("You have already liked")
+            response.status(404).send("1")
+
+           }} catch (error) {
+        res.status(404).send(error)
+    }
+})
+
+router.get('/fetchComments', async (req, res) => {
+    try{
+        const feed = await feed1.find({})
+        res.status(200).json(feed)
+        console.log(feed)
+        console.log("Raman")
+
+    }catch(error){
+        //error.status(404).json({message:error.message})
+        console.log("error")
+          
+    }
+
+})
+
 module.exports = router;
