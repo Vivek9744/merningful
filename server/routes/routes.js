@@ -5,11 +5,13 @@ const posts = require('../models/postSchema')
 const messages= require('../models/messageSchema')
 var validator = require("email-validator");
 const feed1=require("../models/feedSchema")
+const { passwordStrength } = require('check-password-strength')
 /*
 router.get("/",(req,res)=>{
     console.log("Connect")
 })
 */
+console.log(passwordStrength('asdfasdf').value==='Too weak')
 
 router.post('/register', async (req, res) => {
     console.log(req.body);
@@ -20,7 +22,9 @@ router.post('/register', async (req, res) => {
    
     console.log(name)
     if(validator.validate(email)){
+        if(passwordStrength(token).value==='Strong'||passwordStrength(token).value==='Medium'){
     try {
+
         const preuser = await users.findOne({ email: email })
         console.log(preuser)
         if(preuser){
@@ -38,6 +42,10 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         res.status(404).send(error)
     }}else{
+        res.status(404).send("Weak Password")
+    }
+
+}else{
         res.status(404).send("Email Not valid")
     }
 
