@@ -23,6 +23,8 @@ import SideBarH from './comp/SidebarH'
 import {LoginSocialFacebook} from 'reactjs-social-login'
 import {FacebookLoginButton} from 'react-social-login-buttons'
 
+import QRCode from "react-qr-code";
+
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 
@@ -289,6 +291,7 @@ console.log(Img)
 
     
       </LoginSocialFacebook>}</button>
+     
      </div>
      <div></div>
      <div id="sign"></div>
