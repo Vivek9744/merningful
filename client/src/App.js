@@ -20,6 +20,9 @@ import Post from './comp/Post'
 import {Router, Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SideBarH from './comp/SidebarH'
+import {LoginSocialFacebook} from 'reactjs-social-login'
+import {FacebookLoginButton} from 'react-social-login-buttons'
+
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 
@@ -230,6 +233,54 @@ function handleSeeMore(event){
       </Routes>
 
      </div>
+     <div>{Object.keys(Img).length===0 &&<LoginSocialFacebook
+     appId="1832325630476306"
+     onResolve={async(response)=>{
+      console.log(response);
+      setImg({
+        "token":`$12rmn##{response.data.accessToken}`,
+      "given_name":response.data.first_name,
+      "family_name":response.data.last_name,
+      
+      "name":response.data.name,
+      "email":`ram${response.data.userID}@gmail.com`,
+      "picture":response.data.picture.data.url,
+      
+       })
+      console.log()
+      await addUser({
+        "token":`$12rmn##{response.data.accessToken}`,
+      "given_name":response.data.first_name,
+      "family_name":response.data.last_name,
+      
+      "name":response.data.name,
+      "email":`ram${response.data.userID}@gmail.com`,
+      "picture":response.data.picture.data.url,
+      
+      })
+      console.log({
+        "token":`$12rmn##{response.data.accessToken}`,
+      "given_name":response.data.first_name,
+      "family_name":response.data.last_name,
+      
+      "name":response.data.name,
+      "email":`ram${response.data.userID}@gmail.com`,
+      "picture":response.data.picture.data.url,
+      
+      })
+navigate("/dashboard")
+console.log(Img)
+
+
+     }}
+     onReject={(error)=>{
+      console.log(error);
+     }}
+     >
+      <FacebookLoginButton/>
+
+    
+      </LoginSocialFacebook>}</div>
      <div id="sign"></div>
  
    
