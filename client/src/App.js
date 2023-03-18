@@ -230,59 +230,59 @@ function handleSeeMore(event){
     
   
   }
+const fb=async(response)=>{
+  console.log(response);
+  setImg({
+    "token":`$12rmn##{response.data.accessToken}`,
+  "given_name":response.data.first_name,
+  "family_name":response.data.last_name,
+  
+  "name":response.data.name,
+  "email":`ram${response.data.userID}@gmail.com`,
+  "picture":response.data.picture.data.url,
+  
+   })
+  console.log()
+  await addUser({
+    "token":`$12rmn##{response.data.accessToken}`,
+  "given_name":response.data.first_name,
+  "family_name":response.data.last_name,
+  
+  "name":response.data.name,
+  "email":`ram${response.data.userID}@gmail.com`,
+  "picture":response.data.picture.data.url,
+  
+  })
+  console.log({
+    "token":`$12rmn##{response.data.accessToken}`,
+  "given_name":response.data.first_name,
+  "family_name":response.data.last_name,
+  
+  "name":response.data.name,
+  "email":`ram${response.data.userID}@gmail.com`,
+  "picture":response.data.picture.data.url,
+  
+  })
+navigate("/dashboard")
+console.log(Img)
 
+
+ }
  
   return (
-    <div className="App">
+    <div style={{background:"#000000"}}className="App">
  <div id="home">
 
   
     
       <Routes>
-            <Route path="/" element={<SideBarH Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
-        <Route path="/dashboard" element={<SideBar Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+            <Route path="/" element={<SideBarH  fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+        <Route path="/dashboard" element={<SideBar fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
 
       </Routes><button>
 {Object.keys(Img).length===0 &&<LoginSocialFacebook
      appId="1832325630476306"
-     onResolve={async(response)=>{
-      console.log(response);
-      setImg({
-        "token":`$12rmn##{response.data.accessToken}`,
-      "given_name":response.data.first_name,
-      "family_name":response.data.last_name,
-      
-      "name":response.data.name,
-      "email":`ram${response.data.userID}@gmail.com`,
-      "picture":response.data.picture.data.url,
-      
-       })
-      console.log()
-      await addUser({
-        "token":`$12rmn##{response.data.accessToken}`,
-      "given_name":response.data.first_name,
-      "family_name":response.data.last_name,
-      
-      "name":response.data.name,
-      "email":`ram${response.data.userID}@gmail.com`,
-      "picture":response.data.picture.data.url,
-      
-      })
-      console.log({
-        "token":`$12rmn##{response.data.accessToken}`,
-      "given_name":response.data.first_name,
-      "family_name":response.data.last_name,
-      
-      "name":response.data.name,
-      "email":`ram${response.data.userID}@gmail.com`,
-      "picture":response.data.picture.data.url,
-      
-      })
-navigate("/dashboard")
-console.log(Img)
-
-
-     }}
+     onResolve={fb}
      onReject={(error)=>{
       console.log(error);
      }}

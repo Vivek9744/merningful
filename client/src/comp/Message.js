@@ -204,10 +204,11 @@ const [m,setM]=React.useState([])
    
     <br></br>
     <br></br>
-    
-     <TextField id="outlined-basic" name="t1" onChange={sendMessage} label="Enter Message" variant="outlined" />
+    <div className="blockquote blockquote-primary" style={{display:"flex",background:"#ffffff"}}>
+     <TextField style={{marginLeft:"20%"}}id="outlined-basic" name="t1" onChange={sendMessage} label="Enter Message" variant="outlined" />
      <br></br>
-     <Button onClick={sendM} variant="contained">Send Now</Button>
+     <Button style={{marginLeft:"20%"}} onClick={sendM} variant="contained">Send Now</Button>
+     </div>
      <div>
       <br></br>
       {<h1>{mess}</h1> }

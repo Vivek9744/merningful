@@ -43,7 +43,7 @@ export default function User(props){
       
       root.render(
         <>
-      raman
+      
       <Message from={props.email} to={event.target.id}/></>
       );
     }
@@ -74,10 +74,11 @@ console.log(search)
       );
       console.log(code)
     }
-  return(
-    <>
-   
-    <TextField
+  return(<>
+  
+      <div style={{background:"#ffffff",margin:"10px",borderRadius:"10px"}}>
+        <br/>
+  <TextField
         onChange={handleChange}
           id="name"
           label="Search User"
@@ -88,46 +89,71 @@ console.log(search)
        
        
         <Stack direction="row" spacing={2}>
+          <br/>
       
-      <Button onClick={handleSearch} variant="contained" endIcon={<SendIcon />}>
+      <Button style={{marginLeft:"40%"}} onClick={handleSearch} variant="contained" endIcon={<SendIcon />}>
         Search
       </Button>
     </Stack>
-    <section className="text-gray-600 body-font">
-      <div id="load"></div>
-      <div id="search"></div>
-        <div className="container px-5 py-24 mx-auto">
-          
-          <div className="flex flex-wrap -mx-4 -mb-10 text-center">
-            {
+    </div>
+  <div className="row">
+    <div id="load"></div>
+         
+  {
                 users.map(item=>{
                     const k="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     var t;
                     if(item.picture==="gfgh"){
-                        t="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        t="assets/images/dashboard/Rectangle.jpg"
                     }
                     else{
                         t=[item.picture]
                     }
-                    return(
-                        <>
-                         <div className="sm:w-1/2 mb-10 px-4">
-              <div className="rounded-lg h-64 overflow-hidden">
-                <img alt="content" className="object-cover object-center h-full w-full" src={t} />
-              </div>
-              <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">{item.name}</h2>
-              <p className="leading-relaxed text-base">{item.email}</p>
-              <button id={item.email} onClick={handleMessage} className="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Message</button>
-            </div>
-            
-                        </>
-                    )
-                })
-            }
+                    return(<>
+         <div className="col-md-6 col-xl-4 grid-margin stretch-card">
+           <div className="card">
+             <div className="card-body">
            
-          </div>
-        </div>
-      </section>
-    </>
-    )
+               <h4 className="card-title">{item.name}</h4>
+               <div
+                 className="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel"
+                
+               >
+                 <div className="item">
+                  
+                 </div>
+                
+               </div>
+               <div className="d-flex py-4">
+                 <div className="preview-list w-100">
+                   <div className="preview-item p-0">
+                     <div className="preview-thumbnail">
+                       <img
+                         src={t}
+                         className="rounded-circle"
+                         alt=""
+                       />
+                     </div>
+                     <div className="preview-item-content d-flex flex-grow">
+                     <button id={item.email} onClick={handleMessage} className="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Message</button>
+        
+                     </div>
+                   </div>
+                 </div>
+               </div>
+              
+             
+             </div>
+           </div>
+         </div>
+         </>
+
+)
+})
+}
+
+        
+       </div>
+     
+  </>)
 }

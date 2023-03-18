@@ -104,72 +104,133 @@ async function handleSearchPost(){
   
 }
     return(
-        <div>
-          <div id="load">
+    <>
+    <div id="load"></div>
+      <div className="row">
+     
+         
+                    <div className="col-md-7 col-xl-4 grid-margin stretch-card">
+           <div className="card">
+             <div className="card-body">
+           
+               <h4 className="card-title"> <label>Head of The Post</label>
+                    <input onChange={handleChange}
+          id="head" type="text" class="form-control p_input"></input></h4>
+                    <label style={{color:"#6c7293"}} for="w3review">Content of Post Use HasTags for better reach</label>
+
+<textarea   onChange={handleChange}
+          id="body"  className="form-control p_input" name="w3review" rows="4" cols="50"></textarea>
+<button  onClick={handlePost} className="btn btn-outline-primary btn-fw">Post Now</button>
+<br/>
+               <div
+                 className="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel"
+                
+               >
+                 <div className="item">
+                  
+                 </div>
+                
+               </div>
+               <div className="d-flex py-4">
+                 <div className="preview-list w-100">
+                   <div className="preview-item p-0">
+                     <div className="preview-thumbnail">
+                      
+                     </div>
+                     <div className="preview-item-content d-flex flex-grow">
+                    
+                     </div>
+                   </div>
+                 </div>
+               </div>
+              
+             
+             </div>
+           </div>
+         </div>
+         <div className="col-md-6 col-xl-4 grid-margin stretch-card">
+           <div className="card">
+             <div className="card-body">
+           
+               <h4 className="card-title"> <label>Head of The Post</label>
+                    <input onChange={handleChange}
+          id="head" type="text" class="form-control p_input"></input></h4>
+               
+<button  onClick={handleSearchPost} className="btn btn-outline-primary btn-fw">Search Now</button>
+<br/>
+               <div
+                 className="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel"
+                
+               >
+                 <div className="item">
+                  
+                 </div>
+                
+               </div>
+               <div className="d-flex py-4">
+                 <div className="preview-list w-100">
+                   <div className="preview-item p-0">
+                     <div className="preview-thumbnail">
+                      
+                     </div>
+                     <div className="preview-item-content d-flex flex-grow">
+                    
+                     </div>
+                   </div>
+                 </div>
+               </div>
+              
+             
+             </div>
+           </div>
+         </div>
+         </div>
+         
+         <div className="row">
+      {fpost.reverse().map(item=>{
+  return(
+    <>     
+      <div className="col-md-6 col-xl-4 grid-margin stretch-card">
+        <div className="card">
+          <div className="card-body">
+            <h4 className="card-title">{item.head}</h4>
+            <div
+              className="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel"
+             
+            >
+              <div className="item">
+               
+              </div>
+             
+            </div>
+            <div className="d-flex py-4">
+              <div className="preview-list w-100">
+                <div className="preview-item p-0">
+                  <div className="preview-thumbnail">
+                    <img
+                      src="assets/images/faces/face12.jpg"
+                      className="rounded-circle"
+                      alt=""
+                    />
+                  </div>
+                  <div className="preview-item-content d-flex flex-grow">
+                    <div className="flex-grow">
+                      <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                        <h6 style={{color:"green"}}className="preview-subject">{item.user}</h6>
+                        <p className="text-muted text-small">{item.time}</p>
+                      </div>
+                      <p className="text-muted">
+                      
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-muted"> {item.body} </p>
             
           </div>
-           <div style={{fontSize:20}}> Share a new post in Community </div>
-           <h5>Use hashtags to appear in search results</h5>
-            <div>
-        <TextField
-        onChange={handleChange}
-          id="head"
-          label="Post Heading"
-          multiline
-          maxRows={4}
-          defaultValue=""
-        />
-       
-        <TextField
-        onChange={handleChange}
-          id="body"
-          label="Post Content"
-          multiline
-          rows={4}
-          defaultValue=""
-        />
-        <Stack direction="row" spacing={2}>
-      
-      <Button onClick={handlePost} variant="contained" endIcon={<SendIcon />}>
-        Send
-      </Button>
-    </Stack>
-    <hr/>
-    <TextField
-        onChange={handleChange}
-          id="head"
-          label="Post Heading"
-          multiline
-          maxRows={4}
-          defaultValue=""
-        />
-       
-       
-        <Stack direction="row" spacing={2}>
-      
-      <Button onClick={handleSearchPost} variant="contained" endIcon={<SendIcon />}>
-        Search
-      </Button>
-    </Stack>
-      </div>
-            <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
-
- 
-
-            
-{fpost.reverse().map(item=>{
-  return(
-    <>
-    <div className="p-4 md:w-1/3">
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="blog" />
-                <div className="p-6">
-                  <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{item.user}</h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.head}</h1>
-                  <p className="leading-relaxed mb-3">{item.body.substring(0,100)}</p>
-                  <div className="flex items-center flex-wrap ">
+          <div className="flex items-center flex-wrap ">
                     <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0" id={item._id} onClick={()=>props.see(item)}>See More
                       <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14" />
@@ -206,27 +267,23 @@ async function handleSearchPost(){
       </>
        }            </div>
  
-       {item.likes.length}Likes
+      <div style={{color:"#6c7293"}}> {item.likes.length } Likes</div>
        </div>
                   </div>
-                  <div id="comment"></div>
-                </div>
-              </div>
-            </div>
-    </>
+        </div>
+      </div>
+
+
+
+
+      </>
   )
 })}
-
-
-
-
-
-
-
-          </div>
-        
-        </div>
-      </section>
-        </div>
+ 
+      
+      
+     
+    </div>
+  </>
     )
 }

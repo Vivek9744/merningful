@@ -73,96 +73,64 @@ async function handleClick(){
 }
 console.log(props.props)
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box  sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField onChange={handleChange}
-                  autoComplete="given-name"
-                  name="given_name"
-                  required
-                  fullWidth
-                  id="given_name"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                onChange={handleChange}
-                  required
-                  fullWidth
-                  id="family_name"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-
-                <TextField
-                onChange={handleChange}
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                onChange={handleChange}
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="token"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-               
-              </Grid>
-            </Grid>
-            <Button
-            onClick={()=>props.props(user)}
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-          <div id="mess"></div>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
+    <div className="container-scroller">
+    <div className="container-fluid page-body-wrapper full-page-wrapper">
+      <div className="row w-100 m-0">
+        <div className="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+          <div className="card col-lg-4 mx-auto">
+            <div className="card-body px-5 py-5">
+              <h3 className="card-title text-left mb-3">Register</h3>
+              <form>
+                <div className="form-group">
+                  <label>First Name</label>
+                  <input  onChange={handleChange}  id="given_name"type="text" className="form-control p_input" />
+                </div>
+                <div className="form-group">
+                  <label>Last Name</label>
+                  <input  onChange={handleChange} id="family_name"type="text" className="form-control p_input" />
+                </div>
+                <div className="form-group">
+                  <label>Email</label>
+                  <input  onChange={handleChange} id="email"type="email" className="form-control p_input" />
+                </div>
+                <div   className="form-group">
+                  <label>Password</label>
+                  <input  onChange={handleChange} type="password"id="token" className="form-control p_input" />
+                </div>
+              
+                <div className="text-center">
+                  <div
+                     onClick={()=>props.props(user)}
+                    className="btn btn-primary btn-block enter-btn"
+                  >
+                    Sign Up
+                  </div>
+                  <div id="mess"></div>
+                </div>
+                <div className="d-flex">
+                  <button className="btn btn-facebook col mr-2">
+                    <i className="mdi mdi-facebook" /> Facebook{" "}
+                  </button>
+                  <button className="btn btn-google col">
+                    <i className="mdi mdi-google-plus" /> Google plus{" "}
+                  </button>
+                </div>
+                <p className="sign-up text-center">
+                  Already have an Account?<a href="#"> Sign Up</a>
+                </p>
+                <p className="terms">
+                  By creating an account you are accepting our
+                  <a href="#"> Terms &amp; Conditions</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+        {/* content-wrapper ends */}
+      </div>
+      {/* row ends */}
+    </div>
+    {/* page-body-wrapper ends */}
+  </div>
   );
 }

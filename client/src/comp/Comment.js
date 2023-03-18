@@ -30,8 +30,13 @@ export default function Comment(props){
 
   }
   console.log(props)
-  return(<>
-   <Box
+  return(<>   <div className="col-md-6 col-xl-4 grid-margin stretch-card">
+ 
+  <div className="card">
+    <div className="card-body">
+      <div className="d-flex flex-row justify-content-between">
+        
+      <Box
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
@@ -39,30 +44,51 @@ export default function Comment(props){
       noValidate
       autoComplete="off"
     >
-      <TextField onChange={handleChange} id="comments" label="Enter Text" variant="outlined" />
+      <TextField style={{color:"#ffffff"}}onChange={handleChange} id="comments" label="Enter Text" variant="outlined" />
       <Button onClick={handleClick} variant="contained">Comment</Button>
     </Box>
-   
-  {props.com.comments.map(item=>{
+   <br/>
+      
+      </div>
+      <div className="preview-list">
+       
+      {props.com.comments.map(item=>{
     return(
       <>
-      <div style={{backgroundColor:"#000080",width: "18rem"}} className="card">
-    <div className="card-body">
-    <h5 style={{color:"#ffffff"}}className="card-title">{item.user}</h5>
-   
-    <p style={{backgroundColor:"#000000",color:"#ffffff"}}className="card-text">
       
-      {item.content}
-    </p>
-   
-  </div>
-</div></>
+        <div  class="blockquote blockquote-primary">
+        <div className="preview-item border-bottom">
+          <div className="preview-thumbnail">
+            <img
+              src="assets/images/faces/face11.jpg"
+              alt="image"
+              className="rounded-circle"
+            />
+          </div>
+          <div className="preview-item-content d-flex flex-grow">
+            <div className="flex-grow">
+              <div className="d-flex d-md-block d-xl-flex justify-content-between">
+                <h6 className="preview-subject">{item.user}</h6>
+                <p className="text-muted text-small">{item.time}</p>
+              </div>
+              <p className="text-muted">
+             {item.content}
+              </p>
+            </div>
+          </div>
+        </div>
+
+</div>
+
+        </>
     )
   })}
 
 
-
-
-  </>)
+       
+      </div>
+    </div>
+  </div>
+</div></>)
 
 }

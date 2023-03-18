@@ -58,72 +58,47 @@ function func(){
 }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-            onChange={handleChange}
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-            onChange={handleChange}
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="token"
-              autoComplete="current-password"
-            />
-            <div id="mess"></div>
-            <Button
-            onClick={()=>props.props(user)}
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-          <div id="mess"></div>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
+    <div className="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
+    <div className="card col-lg-4 mx-auto">
+      <div className="card-body px-5 py-5">
     
-    </ThemeProvider>
+        <h3 className="card-title text-left mb-3">Login</h3>
+        <form>
+          <div className="form-group">
+            <label>E mail *</label>
+            <input id="email"  onChange={handleChange} type="text" className="form-control p_input" />
+          </div>
+          <div className="form-group">
+            <label>Password *</label>
+            <input 
+            onChange={handleChange} id="token" type="password" className="form-control p_input" />
+          </div>
+      
+          <div className="text-center">
+            <div
+               onClick={()=>props.props(user)}
+              className="btn btn-primary btn-block enter-btn"
+            >
+              Login
+            </div>
+            <br/>
+            <div id="mess"></div>
+       
+          </div>
+          <div className="d-flex">
+            <button className="btn btn-facebook mr-2 col">
+              <i className="mdi mdi-facebook" /> Facebook{" "}
+            </button>
+            <button className="btn btn-google col">
+              <i className="mdi mdi-google-plus" /> Google plus{" "}
+            </button>
+          </div>
+          <p className="sign-up">
+            Don't have an Account?<a href="#"> Sign Up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
   );
 }

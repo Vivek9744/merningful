@@ -207,306 +207,263 @@ export default function SideBar(props) {
     
 }
 
-  return (
-    <Box sx={{ display: 'flex'}}>
-      <CssBaseline />
-      <AppBar position="fixed" sx={{bgcolor: 'text.primary'}} open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
+  return (<div className="container-scroller">
+  {/* partial:partials/_sidebar.html */}
+  <nav className="sidebar sidebar-offcanvas" id="sidebar">
+    <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+      <a className="sidebar-brand brand-logo" href="index.html">
+        <img src="assets/images/logo.svg" alt="logo" />
+      </a>
+      <a className="sidebar-brand brand-logo-mini" href="index.html">
+        <img src="assets/images/logo-mini.svg" alt="logo" />
+      </a>
+    </div>
+    <ul className="nav">
+      <li className="nav-item profile">
+        <div className="profile-desc">
+          <div className="profile-pic">
+            <div className="count-indicator">
+              <img
+                className="img-xs rounded-circle "
+                src={props.Img.picture}
+                alt=""
+              />
+              <span className="count bg-success" />
+            </div>
+            <div className="profile-name">
+              <h5 className="mb-0 font-weight-normal">{props.Img.name}</h5>
+              <span></span>
+            </div>
+          </div>
+          <a href="#" id="profile-dropdown" data-toggle="dropdown">
+            <i className="mdi mdi-dots-vertical" />
+          </a>
+          <div
+            className="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
+            aria-labelledby="profile-dropdown"
           >
-            
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            College Connect
-          </Typography>
-         
-          
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        { Object.keys(props.Img).length===0 ?
-        <div>
-        <List>
+            <a href="#" className="dropdown-item preview-item">
+              <div className="preview-thumbnail">
+                <div className="preview-icon bg-dark rounded-circle">
+                  <i className="mdi mdi-settings text-primary" />
+                </div>
+              </div>
+              <div className="preview-item-content">
+                <p className="preview-subject ellipsis mb-1 text-small">
+                  Account settings
+                </p>
+              </div>
+            </a>
+            <div className="dropdown-divider" />
+            <a href="#" className="dropdown-item preview-item">
+              <div className="preview-thumbnail">
+                <div className="preview-icon bg-dark rounded-circle">
+                  <i className="mdi mdi-onepassword  text-info" />
+                </div>
+              </div>
+              <div className="preview-item-content">
+                <p className="preview-subject ellipsis mb-1 text-small">
+                  Change Password
+                </p>
+              </div>
+            </a>
+            <div className="dropdown-divider" />
+            <a href="#" className="dropdown-item preview-item">
+              <div className="preview-thumbnail">
+                <div className="preview-icon bg-dark rounded-circle">
+                  <i className="mdi mdi-calendar-today text-success" />
+                </div>
+              </div>
+              <div className="preview-item-content">
+                <p className="preview-subject ellipsis mb-1 text-small">
+                  To-do list
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li className="nav-item nav-category">
+        <span className="nav-link">Navigation</span>
+      </li>
 
-       
-          <ListItem onClick={handleSignIn} key={"Sign In"} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon onClick={handleSignIn}
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                  
-                {<img style={{height:"40px"}} src={require("../ico/user.jpg")}></img>}
-               
-                
-               
-              </ListItemIcon>
-              <ListItemText primary={"Sign In"} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-       
-        
-      </List>
+
+
+
+
+
+
+
+
+
+
       
-      <List>
+   
 
-       
-<ListItem  key={"Sign Up"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton onClick={handleSignUp}
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon onClick={handleSignUp}
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/user.jpg")}></img>}
+      <li onClick={Fee} className="nav-item menu-items">
+        <a className="nav-link" >
+          <span className="menu-icon">
+            <i className="mdi mdi-playlist-play" />
+          </span>
+          <span className="menu-title">Feed</span>
+        </a>
+      </li>
+      <li onClick={Friends} className="nav-item menu-items">
+        <a className="nav-link">
+          <span className="menu-icon">
+            <i className="mdi mdi-table-large" />
+          </span>
+          <span className="menu-title">Friends</span>
+        </a>
+      </li>
+      <li  onClick={handleAbout} className="nav-item menu-items">
+        <a className="nav-link" >
+          <span className="menu-icon">
+            <i className="mdi mdi-chart-bar" />
+          </span>
+          <span className="menu-title">About Us</span>
+        </a>
+      </li>
+      <li onClick={props.log} className="nav-item menu-items">
+        <a className="nav-link">
+          <span className="menu-icon">
+            <i className="mdi mdi-contacts" />
+          </span>
+          <span className="menu-title">Log Out</span>
+        </a>
+      </li>
+    
      
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Sign Up"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
 
 
-</List>
-
-<List>
-
-       
-<ListItem onClick={handleAbout} key={"About Us"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon onClick={handleAbout}
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/about.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"About Us"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
 
 
-</List>
+
+
+
+
+
+
+    </ul>
+  </nav>
+  {/* partial */}
+  <div className="container-fluid page-body-wrapper">
+    {/* partial:partials/_navbar.html */}
+    <nav className="navbar p-0 fixed-top d-flex flex-row">
+      <div className="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+        <a className="navbar-brand brand-logo-mini" href="index.html">
+          <img src="assets/images/logo-mini.svg" alt="logo" />
+        </a>
       </div>
+      <div className="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+        <button
+          className="navbar-toggler navbar-toggler align-self-center"
+          type="button"
+          data-toggle="minimize"
+        >
+          <span className="mdi mdi-menu" />
+        </button>
+        
+        <ul className="navbar-nav navbar-nav-right">
       
-        :
-
-        <div>
-        <List>
-
-       
-          <ListItem key={"Profile"} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? 'initial' : 'center',
-                px: 2.5,
-              }}
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link"
+              id="profileDropdown"
+              href="#"
+              data-toggle="dropdown"
             >
-              <ListItemIcon onClick={ch}
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : 'auto',
-                  justifyContent: 'center',
-                }}
-              >
-                  
-                {<img style={{height:"40px"}} src={props.Img.picture}></img>}
-               
-                
-               
-              </ListItemIcon>
-              <ListItemText primary={"Profile"} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-       
-        
-      </List>
-      
-      <List>
-
-       
-<ListItem key={"Feed"} disablePadding sx={{ display: 'block' }} onClick={Fee}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/feed.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Feed"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-
-<List>
-
-       
-<ListItem onClick={props.log}key={"Sign Out"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-  onClick={props.log}
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon 
-    onClick={props.log}
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/user.jpg")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText  onClick={props.log} primary={"Sign Out"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-<List>
-
-       
-<ListItem onClick={Friends} key={"Friends"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-  onClick={Friends}
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon onClick={Friends} 
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/group.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText primary={"Friends"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
-<List>
-
-       
-<ListItem onClick={handleAbout} key={"About Us"} disablePadding sx={{ display: 'block' }}>
-  <ListItemButton
-    sx={{
-      minHeight: 48,
-      justifyContent: open ? 'initial' : 'center',
-      px: 2.5,
-    }}
-  >
-    <ListItemIcon onClick={handleAbout}
-      sx={{
-        minWidth: 0,
-        mr: open ? 3 : 'auto',
-        justifyContent: 'center',
-      }}
-    >
-        
-      {<img style={{height:"40px"}} src={require("../ico/about.png")}></img>}
-     
-      
-     
-    </ListItemIcon>
-    <ListItemText onClick={handleAbout} primary={"About Us"} sx={{ opacity: open ? 1 : 0 }} />
-  </ListItemButton>
-</ListItem>
-
-
-</List>
+              <div className="navbar-profile">
+                <img
+                  className="img-xs rounded-circle"
+                  src={props.Img.picture}
+                  alt=""
+                />
+                <p className="mb-0 d-none d-sm-block navbar-profile-name">
+                  {props.Img.name}
+                </p>
+                <i className="mdi mdi-menu-down d-none d-sm-block" />
+              </div>
+            </a>
+            <div
+              className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+              aria-labelledby="profileDropdown"
+            >
+              <h6 className="p-3 mb-0">Profile</h6>
+              <div className="dropdown-divider" />
+              <a className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-dark rounded-circle">
+                    <i className="mdi mdi-settings text-success" />
+                  </div>
+                </div>
+                <div className="preview-item-content">
+                  <p className="preview-subject mb-1">Settings</p>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-dark rounded-circle">
+                    <i className="mdi mdi-logout text-danger" />
+                  </div>
+                </div>
+                <div className="preview-item-content">
+                  <p className="preview-subject mb-1">Log out</p>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <p className="p-3 mb-0 text-center">Advanced settings</p>
+            </div>
+          </li>
+        </ul>
+        <button
+          className="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+          type="button"
+          data-toggle="offcanvas"
+        >
+          <span className="mdi mdi-format-line-spacing" />
+        </button>
       </div>
-      }
-        <Divider />
+    </nav>
+    {/* partial */}
+    <div className="main-panel">
+      <div className="content-wrapper">
        
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-      
-        <div id="main"> {Object.keys(props.Img).length===0  ? <SideBar1 log={props.log}Img={props.Img} />:<Feed see={handleSeeMore} props={props.Img}/>}
-      
-       </div>
-      </Box>
- 
-    </Box>
+<div id="main"> {Object.keys(props.Img).length===0  ? <SideBar1 fbb={props.fbb}  log={props.log}Img={props.Img} />:<Feed see={handleSeeMore} props={props.Img}/>}
+</div>
 
-  );
+
+
+
+
+       
+       
+      </div>
+      {/* content-wrapper ends */}
+      {/* partial:partials/_footer.html */}
+      <footer className="footer">
+        <div className="d-sm-flex justify-content-center justify-content-sm-between">
+          <span className="text-muted d-block text-center text-sm-left d-sm-inline-block">
+            Copyright © College Connect 2023
+          </span>
+          <span className="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+            {" "}
+            {" "}
+            <a
+              href="https://www.bootstrapdash.com/bootstrap-admin-template/"
+              target="_blank"
+            >
+              
+            </a>{" "}
+           
+          </span>
+        </div>
+      </footer>
+      {/* partial */}
+    </div>
+    {/* main-panel ends */}
+  </div>
+  {/* page-body-wrapper ends */}
+</div> );
 }
