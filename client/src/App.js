@@ -11,6 +11,8 @@ import SideBar1 from './comp/SideBar1'
 import jwt_decode from 'jwt-decode'
 
 import {addUser} from "./service/api"
+import {addUser2} from "./service/api"
+import {addUser3} from "./service/api"
 import {isUser} from "./service/api"
 import SignU from './comp/SignU'
 import ReactDOM from 'react-dom/client';
@@ -22,6 +24,8 @@ import { useNavigate } from "react-router-dom";
 import SideBarH from './comp/SidebarH'
 import {LoginSocialFacebook} from 'reactjs-social-login'
 import {FacebookLoginButton} from 'react-social-login-buttons'
+import Otp from './comp/Otp'
+
 
 import QRCode from "react-qr-code";
 
@@ -61,7 +65,7 @@ const k={
 
 }
 console.log(k)
-await addUser({
+await addUser3({
   "token":userObject.aud,
 "given_name":userObject.given_name,
 "family_name":userObject.family_name,
@@ -121,6 +125,32 @@ root.render(
       
       }
       console.log(k)
+      const code= await addUser(k)
+  console.log(code)
+  console.log(code.data)
+     if(code.data===2){
+      const root = ReactDOM.createRoot(
+        document.getElementById('main')
+      );
+      console.log("otp created")
+      
+      root.render(
+        <>
+        <Otp data={k}handleotp={handleO}/>
+        </>
+      );
+     }else{
+      console.log("not Submitted")
+      const root = ReactDOM.createRoot(
+        document.getElementById('mess')
+      );
+      
+      root.render(
+        <>
+        Error
+        </>)}
+      
+      /*
       console.log(await addUser())
      const code= await addUser(k)
   
@@ -150,6 +180,91 @@ root.render(
       Error
       </>
     );}
+
+
+
+    */
+
+}
+async function handleO(user){
+  
+
+
+  const root = ReactDOM.createRoot(
+    document.getElementById('mess')
+  );
+  
+  root.render(
+    <>
+    <Load/>
+    </>
+  );
+  const k={
+    "otp5":user.otp5,
+      "token":user.token,
+    "given_name":user.given_name,
+    "family_name":user.family_name,
+    
+    "name":`${user.given_name}${user.family_name}`,
+    "email":user.email,
+    "picture":"https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    
+    }
+    console.log(k)
+    const code=  await addUser2(k)
+    console.log(code)
+   if(code.data===2){
+    console.log("submitted")
+    setImg(k)
+    navigate("/dashboard")
+    const root = ReactDOM.createRoot(
+      document.getElementById('main')
+    );
+    
+    root.render(
+      <>
+      <Feed see={handleSeeMore} props={Img}/>
+      </>
+    );
+   }
+    
+    /*
+    console.log(await addUser())
+   const code= await addUser(k)
+
+   if(Object.keys(code.response.data).length===0){
+      console.log("submitted")
+      setImg(k)
+      navigate("/dashboard")
+      const root = ReactDOM.createRoot(
+        document.getElementById('main')
+      );
+      
+      root.render(
+        <>
+        <Feed see={handleSeeMore} props={Img}/>
+        </>
+      );
+    
+     
+   }else{
+  console.log("not Submitted")
+  const root = ReactDOM.createRoot(
+    document.getElementById('mess')
+  );
+  
+  root.render(
+    <>
+    Error
+    </>
+  );}
+
+
+
+  */
+
+
+
 }
 function hand(){
  
@@ -187,6 +302,7 @@ async function handleSignIn(user){
 
    if((code.response.data)===0){
       console.log("Please check your credential")
+      console.log(code.response.data)
       const root = ReactDOM.createRoot(
         document.getElementById('mess')
       );
@@ -243,7 +359,7 @@ const fb=async(response)=>{
   
    })
   console.log()
-  await addUser({
+  await addUser3({
     "token":`$12rmn##{response.data.accessToken}`,
   "given_name":response.data.first_name,
   "family_name":response.data.last_name,
@@ -276,7 +392,7 @@ console.log(Img)
   
     
       <Routes>
-            <Route path="/" element={<SideBarH  fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+            <Route path="/" element={<SideBarH otp={handleO} fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
         <Route path="/dashboard" element={<SideBar fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
 
       </Routes><button>

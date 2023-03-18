@@ -11,6 +11,29 @@ export const addUser=async (data)=>{
         return error
     }
 }
+
+
+export const addUser3=async (data)=>{
+    try{
+        return await axios.post(`${URL}/register1`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
+
+
+export const addUser2=async (data)=>{
+    try{
+        return await axios.post(`${URL}/cOtp`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
+
 export const posts=async (data)=>{
     try{
         return await axios.post(`${URL}/post`,data)

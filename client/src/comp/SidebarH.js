@@ -150,7 +150,7 @@ export default function SideBar(props) {
     );
     
     root.render(
-      <SignU props={props.sufun}/>
+      <SignU otp={props.otp} props={props.sufun}/>
     );
 
 
