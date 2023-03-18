@@ -28,6 +28,7 @@ import SignU from './SignU'
 import SignI from './SignI'
 import User from './User'
 import Message from './Message';
+import logo from '../logo.jpg'
 import Load from './Load';
 import Post from './Post'
 import About from './About'
@@ -212,7 +213,7 @@ export default function SideBar(props) {
   <nav className="sidebar sidebar-offcanvas" id="sidebar">
     <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
       <a className="sidebar-brand brand-logo" href="index.html">
-        <img src="assets/images/logo.svg" alt="logo" />
+        <img src={logo} alt="logo" />
       </a>
       <a className="sidebar-brand brand-logo-mini" href="index.html">
         <img src="assets/images/logo-mini.svg" alt="logo" />
