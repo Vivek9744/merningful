@@ -147,7 +147,7 @@ root.render(
       
       root.render(
         <>
-        Error
+        Error {code.response.data}
         </>)}
       
       /*
@@ -224,6 +224,16 @@ async function handleO(user){
     root.render(
       <>
       <Feed see={handleSeeMore} props={Img}/>
+      </>
+    );
+   }else{
+    const root = ReactDOM.createRoot(
+      document.getElementById('mess')
+    );
+    
+    root.render(
+      <>
+      Error {code.response.data}
       </>
     );
    }
@@ -309,7 +319,7 @@ async function handleSignIn(user){
       
       root.render(
         <>
-        Error
+        Error {code.response.data}
         </>
       );
      
