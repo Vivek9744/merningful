@@ -45,7 +45,7 @@ export default function Comment(props){
       autoComplete="off"
     >
       <TextField style={{color:"#ffffff"}}onChange={handleChange} id="comments" label="Enter Text" variant="outlined" />
-      <Button onClick={handleClick} variant="contained">Comment</Button>
+      <Button onClick={()=>props.hc(comment)} variant="contained">Comment</Button>
     </Box>
    <br/>
       

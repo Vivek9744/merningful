@@ -43,6 +43,10 @@ export const posts=async (data)=>{
     }
 }
 
+
+
+
+
 export const getUsers=async ()=>{
     try{
     return await axios.get(`${URL}/fetchUsers`)
@@ -128,6 +132,17 @@ export const isLiked=async (data)=>{
 export const searchPost=async (data)=>{
     try{
         return await axios.post(`${URL}/searchPost`,data)
+
+    }catch(error){
+        console.log("Error add",error.response.data)
+        return error
+    }
+}
+
+
+export const seePost=async (data)=>{
+    try{
+        return await axios.post(`${URL}/seePost`,data)
 
     }catch(error){
         console.log("Error add",error.response.data)

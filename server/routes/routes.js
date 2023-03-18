@@ -433,4 +433,33 @@ router.post('/searchPost', async (req, res) => {
 
 })
 
+
+router.post('/seePost', async (req, res) => {
+    console.log(req.body);
+   
+    const { _id} = req.body
+    console.log(_id)
+
+
+   
+  
+    try {
+        const preuser = await feed1.findOne({_id:_id})
+        console.log(preuser)
+        if(preuser){
+            res.status(201).send(preuser)
+            console.log(preuser)
+            console.log("ha")
+        }
+        else{
+            res.status(404).send("No user Found")
+            console.log("Not found")
+        }
+    } catch (error) {
+        res.status(404).send(error)
+        console.log("Error")
+    }
+
+})
+
 module.exports = router;

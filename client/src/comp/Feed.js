@@ -43,6 +43,7 @@ async function handlePost(){
   "hashtag":post.body.match(/#\w+/g)};
   console.log(p)
   await posts(p)
+  getAllPost()
 }
 const [fpost,setFposts]=React.useState([])
 React.useEffect(()=>{
