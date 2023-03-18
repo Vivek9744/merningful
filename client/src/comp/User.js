@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import {searchUser} from '../service/api'
+import Profile  from "./Profile";
 export default function User(props){
     const [users,setUsers]=React.useState([])
     React.useEffect(()=>{
@@ -74,6 +75,16 @@ console.log(search)
       );
       console.log(code)
     }
+    function handleProfile(event){
+
+ const root = ReactDOM.createRoot(
+      document.getElementById('main')
+    );
+    
+    root.render(
+      <Profile user={event.email} props={event}/>
+    );
+    }
   return(<>
   
       <div style={{background:"#ffffff",margin:"10px",borderRadius:"10px"}}>
@@ -110,7 +121,7 @@ console.log(search)
                         t=[item.picture]
                     }
                     return(<>
-         <div className="col-md-6 col-xl-4 grid-margin stretch-card">
+         <div onClick={()=>handleProfile(item)}className="col-md-6 col-xl-4 grid-margin stretch-card">
            <div className="card">
              <div className="card-body">
            

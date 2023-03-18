@@ -55,6 +55,7 @@ export const getUsers=async ()=>{
     console.log("Error Get",error)
 }
 }
+
 export const getPosts=async ()=>{
     try{
     return await axios.get(`${URL}/fetchPosts`)
@@ -63,6 +64,7 @@ export const getPosts=async ()=>{
     console.log("Error Get",error)
 }
 }
+
 
 export const addMessage=async (data)=>{
     try{
@@ -148,4 +150,15 @@ export const seePost=async (data)=>{
         console.log("Error add",error.response.data)
         return error
     }
+}
+
+
+export const getProfilePosts=async (data)=>{
+    console.log("Raman get")
+    try{
+    return await axios.post(`${URL}/fetchProfilePosts`,data)
+
+}catch(error){
+    console.log("Error Get",error)
+}
 }

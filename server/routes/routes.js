@@ -236,7 +236,7 @@ router.get('/fetchPosts', async (req, res) => {
         const feed = await feed1.find({})
         res.status(200).json(feed)
         console.log(feed)
-        console.log("Raman")
+        console.log("Ramaan")
 
     }catch(error){
         //error.status(404).json({message:error.message})
@@ -458,6 +458,25 @@ router.post('/seePost', async (req, res) => {
     } catch (error) {
         res.status(404).send(error)
         console.log("Error")
+    }
+
+})
+
+
+
+router.post('/fetchProfilePosts', async (req, res) => {
+    console.log(req.body)
+    const {user}=req.body
+    try{
+        const feed = await feed1.find({user:user})
+        res.status(200).json(feed)
+        //console.log(feed)
+        console.log("Ramban")
+
+    }catch(error){
+        //error.status(404).json({message:error.message})
+        console.log("error")
+          
     }
 
 })

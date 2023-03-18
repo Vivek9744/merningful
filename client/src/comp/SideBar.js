@@ -113,13 +113,13 @@ export default function SideBar(props) {
   console.log(props)
  
   function ch(){
-   
+   console.log("clikked")
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
     
     root.render(
-      <Profile props={props.Img}/>
+      <Profile user={props.Img.email} props={props.Img}/>
     );
   }
   function Fee(){
@@ -222,7 +222,7 @@ export default function SideBar(props) {
     <ul className="nav">
       <li className="nav-item profile">
         <div className="profile-desc">
-          <div className="profile-pic">
+          <div onClick={ch} className="profile-pic">
             <div className="count-indicator">
               <img
                 className="img-xs rounded-circle "
