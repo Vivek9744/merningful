@@ -328,14 +328,7 @@ export default function SideBar(props) {
           <span className="menu-title">About Us</span>
         </a>
       </li>
-      <li className="nav-item menu-items">
-        <a className="nav-link">
-          <span className="menu-icon">
-            <i className="mdi mdi-contacts" />
-          </span>
-          <span className="menu-title">Icons</span>
-        </a>
-      </li>
+     
     
      
 
