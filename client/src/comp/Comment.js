@@ -34,7 +34,7 @@ export default function Comment(props){
  
   <div className="card">
     <div className="card-body">
-      <div className="d-flex flex-row justify-content-between">
+      <div style={{marginBottom:"5%"}}className="d-flex flex-row justify-content-between">
         
       <Box
       component="form"

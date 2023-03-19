@@ -120,7 +120,7 @@ async function handleSearchPost(){
                     <label style={{color:"#6c7293"}} for="w3review">Content of Post Use HasTags for better reach</label>
 
 <textarea   onChange={handleChange}
-          id="body"  className="form-control p_input" name="w3review" rows="4" cols="50"></textarea>
+          id="body"  className="my-3 form-control p_input" name="w3review" rows="4" cols="50"></textarea>
 <button  onClick={handlePost} className="btn btn-outline-primary btn-fw">Post Now</button>
 <br/>
                <div

@@ -88,7 +88,7 @@ console.log(search)
     }
   return(<>
   
-      <div style={{background:"#ffffff",margin:"10px",borderRadius:"10px"}}>
+      <div style={{background:"#ffffff",marginBottom:"10px",borderRadius:"10px"}}>
         <br/>
   <TextField
         onChange={handleChange}
@@ -97,13 +97,14 @@ console.log(search)
           multiline
           maxRows={4}
           defaultValue=""
+          style={{marginBottom:"2%"}}
         />
        
        
         <Stack direction="row" spacing={2}>
           <br/>
       
-      <Button style={{marginLeft:"40%"}} onClick={handleSearch} variant="contained" endIcon={<SendIcon />}>
+      <Button color="success" style={{marginLeft:"40%"}} onClick={handleSearch} variant="contained" endIcon={<SendIcon />}>
         Search
       </Button>
     </Stack>
