@@ -239,49 +239,7 @@ export default function SideBar(props) {
           <a href="#" id="profile-dropdown" data-toggle="dropdown">
             <i className="mdi mdi-dots-vertical" />
           </a>
-          <div
-            className="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-            aria-labelledby="profile-dropdown"
-          >
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-settings text-primary" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  Account settings
-                </p>
-              </div>
-            </a>
-            <div className="dropdown-divider" />
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-onepassword  text-info" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  Change Password
-                </p>
-              </div>
-            </a>
-            <div className="dropdown-divider" />
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-calendar-today text-success" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  To-do list
-                </p>
-              </div>
-            </a>
-          </div>
+        
         </div>
       </li>
       <li className="nav-item nav-category">
@@ -392,29 +350,19 @@ export default function SideBar(props) {
             >
               <h6 className="p-3 mb-0">Profile</h6>
               <div className="dropdown-divider" />
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-dark rounded-circle">
-                    <i className="mdi mdi-settings text-success" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <p className="preview-subject mb-1">Settings</p>
-                </div>
-              </a>
+            
               <div className="dropdown-divider" />
-              <a className="dropdown-item preview-item">
+              <a  onClick={props.log}  className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
                   <div className="preview-icon bg-dark rounded-circle">
                     <i className="mdi mdi-logout text-danger" />
                   </div>
                 </div>
-                <div className="preview-item-content">
+                <div  className="preview-item-content">
                   <p className="preview-subject mb-1">Log out</p>
                 </div>
               </a>
-              <div className="dropdown-divider" />
-              <p className="p-3 mb-0 text-center">Advanced settings</p>
+              
             </div>
           </li>
         </ul>

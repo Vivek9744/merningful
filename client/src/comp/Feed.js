@@ -114,7 +114,7 @@ async function handleSearchPost(){
            <div className="card">
              <div className="card-body">
            
-               <h4 className="card-title"> <label>Head of The Post</label>
+               <h4 className="card-title"> <label>Heading of The Post</label>
                     <input onChange={handleChange}
           id="head" type="text" class="form-control p_input"></input></h4>
                     <label style={{color:"#6c7293"}} for="w3review">Content of Post Use HasTags for better reach</label>
@@ -153,7 +153,7 @@ async function handleSearchPost(){
            <div className="card">
              <div className="card-body">
            
-               <h4 className="card-title"> <label>Head of The Post</label>
+               <h4 className="card-title"> <label>Enter keywords to search</label>
                     <input onChange={handleChange}
           id="head" type="text" class="form-control p_input"></input></h4>
                

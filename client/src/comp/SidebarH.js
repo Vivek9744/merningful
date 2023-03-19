@@ -33,6 +33,7 @@ import Post from './Post'
 import About from './About'
 import { useNavigate } from "react-router-dom";
 import logo from '../logo.jpg'
+import userlogo from '../user.png'
 const drawerWidth = 240;
 
 
@@ -203,6 +204,19 @@ export default function SideBar(props) {
     
   
   }
+  function handleHome(){
+    
+    const root = ReactDOM.createRoot(
+      document.getElementById('main')
+    );
+    
+    root.render(
+      <>
+     
+    <SideBar1 fbb={props.fbb} log={props.log}Img={props.Img} />
+      </>
+    );
+  }
 
   return (  <div className="container-scroller">
   {/* partial:partials/_sidebar.html */}
@@ -222,7 +236,7 @@ export default function SideBar(props) {
             <div className="count-indicator">
               <img
                 className="img-xs rounded-circle "
-                src="assets/images/faces/face15.jpg"
+                src={userlogo}
                 alt=""
               />
               <span className="count bg-success" />
@@ -235,49 +249,7 @@ export default function SideBar(props) {
           <a href="#" id="profile-dropdown" data-toggle="dropdown">
             <i className="mdi mdi-dots-vertical" />
           </a>
-          <div
-            className="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
-            aria-labelledby="profile-dropdown"
-          >
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-settings text-primary" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  Account settings
-                </p>
-              </div>
-            </a>
-            <div className="dropdown-divider" />
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-onepassword  text-info" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  Change Password
-                </p>
-              </div>
-            </a>
-            <div className="dropdown-divider" />
-            <a href="#" className="dropdown-item preview-item">
-              <div className="preview-thumbnail">
-                <div className="preview-icon bg-dark rounded-circle">
-                  <i className="mdi mdi-calendar-today text-success" />
-                </div>
-              </div>
-              <div className="preview-item-content">
-                <p className="preview-subject ellipsis mb-1 text-small">
-                  To-do list
-                </p>
-              </div>
-            </a>
-          </div>
+        
         </div>
       </li>
       <li className="nav-item nav-category">
@@ -294,8 +266,8 @@ export default function SideBar(props) {
 
 
 
-      <li className="nav-item menu-items">
-        <a className="nav-link" href="index.html">
+      <li onClick={handleHome}className="nav-item menu-items">
+        <a className="nav-link" >
           <span className="menu-icon">
             <i className="mdi mdi-speedometer" />
           </span>
@@ -373,7 +345,7 @@ export default function SideBar(props) {
               <div className="navbar-profile">
                 <img
                   className="img-xs rounded-circle"
-                  src="assets/images/faces/face15.jpg"
+                  src={userlogo}
                   alt=""
                 />
                 <p className="mb-0 d-none d-sm-block navbar-profile-name">
@@ -382,36 +354,7 @@ export default function SideBar(props) {
                 <i className="mdi mdi-menu-down d-none d-sm-block" />
               </div>
             </a>
-            <div
-              className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-              aria-labelledby="profileDropdown"
-            >
-              <h6 className="p-3 mb-0">Profile</h6>
-              <div className="dropdown-divider" />
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-dark rounded-circle">
-                    <i className="mdi mdi-settings text-success" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <p className="preview-subject mb-1">Settings</p>
-                </div>
-              </a>
-              <div className="dropdown-divider" />
-              <a className="dropdown-item preview-item">
-                <div className="preview-thumbnail">
-                  <div className="preview-icon bg-dark rounded-circle">
-                    <i className="mdi mdi-logout text-danger" />
-                  </div>
-                </div>
-                <div className="preview-item-content">
-                  <p className="preview-subject mb-1">Log out</p>
-                </div>
-              </a>
-              <div className="dropdown-divider" />
-              <p className="p-3 mb-0 text-center">Advanced settings</p>
-            </div>
+           
           </li>
         </ul>
         <button

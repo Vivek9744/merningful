@@ -15,7 +15,7 @@ return(
                     <h4 class="card-title">Join Now</h4>
                     <div class="table-responsive">
                       <div class="blockquote blockquote-primary">
-                      <h1 class="display-1">Create you account and join Us now</h1>
+                      <h1 class="display-1">Create your account and join Us now</h1>
                       <div id="hide">
               <button id="sign1" className="inline-flex text-white bg-blue-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded">Sign In</button></div>
               <button>

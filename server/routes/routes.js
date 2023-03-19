@@ -435,7 +435,7 @@ router.post('/searchPost', async (req, res) => {
    
   
     try {
-        const preuser = await feed1.find({hashtag:{$regex:`${head}`,$options:"$i"}})
+        const preuser = await feed1.find({$or:[{hashtag:{$regex:`${head}`,$options:"$i"}},{head:{$regex:`${head}`,$options:"$i"}},{user:{$regex:`${head}`,$options:"$i"}}]})
         console.log(preuser)
         if(preuser){
             res.status(404).send(preuser)
