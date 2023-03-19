@@ -100,9 +100,11 @@ async function handleSearchPost(){
     return(
     <>
     <div id="load"></div>
-    <div style={{flex:1,justifyContent: "center",alignItems: "center"}}>
-            <img  src={props.props.picture}></img>
-            </div>
+    <div style={{flex:1,justifyContent: "center",alignItems: "center",background:"#ffffff",marginLeft:"40%",marginRight:"40%"}}>
+  
+      <div style={{width:"128px",marginLeft:"12%"}}>           <img   src={props.props.picture==="gfgh"||props.props.picture==="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"?"user.png":props.props.picture}></img>
+      </div>
+   </div>
             Profile
             Name : {props.props.name}
          

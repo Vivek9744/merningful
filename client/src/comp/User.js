@@ -11,6 +11,7 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import {searchUser} from '../service/api'
 import Profile  from "./Profile";
+import userlogo from '../user.png'
 export default function User(props){
     const [users,setUsers]=React.useState([])
     React.useEffect(()=>{
@@ -114,8 +115,8 @@ console.log(search)
                 users.map(item=>{
                     const k="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     var t;
-                    if(item.picture==="gfgh"){
-                        t="assets/images/dashboard/Rectangle.jpg"
+                    if(item.picture===k || item.picture==="gfgh"){
+                        t="user.png"
                     }
                     else{
                         t=[item.picture]
@@ -143,7 +144,7 @@ console.log(search)
                         src={t}
                        
                         alt=""
-                        style={{height:"110%"}}
+                        style={{height:"50%"}}
                       />
                     </div>
                    <div className="preview-item p-0">
