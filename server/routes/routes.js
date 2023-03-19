@@ -7,6 +7,7 @@ var validator = require("email-validator");
 const feed1=require("../models/feedSchema")
 const { passwordStrength } = require('check-password-strength')
 const sendEmail=require('../utils/sendEmail')
+const bcrypt=require('bcryptjs')
 
 const otp=require("../models/otpSchema")
 /*
@@ -20,12 +21,12 @@ router.post('/register1', async (req, res) => {
     console.log(req.body);
     var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
     const { name, email,given_name,picture,token,family_name } = req.body
-
+var pass=`QN@#m${token}`
     var m=1;
    
     console.log(name)
     if(validator.validate(email)){
-        if(passwordStrength(token).value==='Strong'||passwordStrength(token).value==='Medium'){
+        if(passwordStrength(pass).value==='Strong'||passwordStrength(pass).value==='Medium'){
     try {
 
         const preuser = await users.findOne({ email: email })
@@ -34,10 +35,15 @@ router.post('/register1', async (req, res) => {
             res.status(404).send("This user already exists")
         }
         else{
+
+    
+            
             const adduser=new users({
                 name, email,given_name,picture,token,family_name
 
             })
+
+            
             await adduser.save();
             response.status(201).json(adduser)
             console.log(adduser)
@@ -149,10 +155,20 @@ console.log("otp creation section")
 
 
 router.post("/cOtp",async(req,res)=>{
-    const {otp5, name, email,given_name,picture,token,family_name } =req.body
+    var {otp5, name, email,given_name,picture,token,family_name } =req.body
+    /*
     const adduser=new users({
         name, email,given_name,picture,token,family_name
 
+    })
+    */
+
+    const salt=await bcrypt.genSalt(10)
+    const secPas=await bcrypt.hash(token,salt)
+token=secPas
+    const adduser=new users({
+        name, email,given_name,picture,token,family_name
+    
     })
     try{
     const otp3=await otp.find({otp:otp5,email:email})
@@ -199,9 +215,9 @@ router.post('/isUser', async (req, res) => {
     const { name, email,given_name,picture,token,family_name } = req.body
     console.log(name)
     try {
-        const preuser = await users.findOne({ email: email,token:token })
+        const preuser = await users.findOne({ email: email })
         console.log(preuser)
-        if(preuser){
+        if(bcrypt.compareSync(token,preuser.token)){
             res.status(404).send(preuser)
         }
         else{

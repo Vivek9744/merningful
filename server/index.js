@@ -1,6 +1,22 @@
 const express =require('express')
 const app=express()
 
+const bcrypt=require('bcryptjs')
+/*
+async function Hash(){
+const salt=await bcrypt.genSalt(10)
+const secPas=await bcrypt.hash("raman",salt)
+const secPas2=await bcrypt.hash("raman",salt)
+console.log(secPas)
+console.log(bcrypt.compareSync("raman1",secPas))
+console.log(bcrypt.compareSync("raman",secPas2))
+}
+*/
+
+
+
+
+
 
 const cors=require("cors")
 app.use(cors())
@@ -41,4 +57,5 @@ io.on("connection",(socket)=>{
 })
 server.listen(port,()=>{
     console.log("Server is running hello")
+  
 })
