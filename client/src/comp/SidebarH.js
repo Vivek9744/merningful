@@ -222,10 +222,10 @@ export default function SideBar(props) {
   {/* partial:partials/_sidebar.html */}
   <nav className="sidebar sidebar-offcanvas" id="sidebar">
     <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a className="sidebar-brand brand-logo" href="index.html">
+      <a className="sidebar-brand brand-logo">
         <img src={logo} style={{height:"150%"}} alt="logo" />
       </a>
-      <a className="sidebar-brand brand-logo-mini" href="index.html">
+      <a className="sidebar-brand brand-logo-mini">
         <img src="assets/images/logo-mini.svg" alt="logo" />
       </a>
     </div>
@@ -246,7 +246,7 @@ export default function SideBar(props) {
               <span></span>
             </div>
           </div>
-          <a href="#" id="profile-dropdown" data-toggle="dropdown">
+          <a id="profile-dropdown" data-toggle="dropdown">
             <i className="mdi mdi-dots-vertical" />
           </a>
         
@@ -320,7 +320,7 @@ export default function SideBar(props) {
     {/* partial:partials/_navbar.html */}
     <nav className="navbar p-0 fixed-top d-flex flex-row">
       <div className="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-        <a className="navbar-brand brand-logo-mini" href="index.html">
+        <a className="navbar-brand brand-logo-mini">
           <img src="assets/images/logo-mini.svg" alt="logo" />
         </a>
       </div>
@@ -339,7 +339,7 @@ export default function SideBar(props) {
             <a
               className="nav-link"
               id="profileDropdown"
-              href="#"
+              
               data-toggle="dropdown"
             >
               <div className="navbar-profile">

@@ -83,7 +83,7 @@
                 </div>
               </div>
               <div  className="blockquote blockquote-primary">
-              <p className="text-muted">{props.data.body} </p>
+              <p style={{color:"#ffffff"}} className="text-muted">{props.data.body} </p>
             </div>
            
            <div style={{marginBottom:"5%"}}>{props.data.likes.length}  Likes</div>  </div>
@@ -140,7 +140,7 @@
                        
                        <div className="preview-thumbnail">
                          <img
-                           src="assets/images/faces/face12.jpg"
+                           src="user.png"
                            className="rounded-circle"
                            alt=""
                          />
@@ -157,8 +157,8 @@
                      </div>
                    </div>
                  </div>
-                 <div  className="blockquote blockquote-primary">
-                 <p className="text-muted">{w.body} </p>
+                 <div>
+                 <p style={{color:"#ffffff"}}className="text-muted">{w.body} </p>
                </div>
               
               <div style={{marginBottom:"5%"}}>{w.likes.length}  Likes</div>  </div>

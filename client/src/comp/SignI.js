@@ -18,7 +18,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -94,7 +94,7 @@ function func(){
             </button>
           </div>
           <p className="sign-up">
-            Don't have an Account?<a href="#"> Sign Up</a>
+            Don't have an Account?<a> Sign Up</a>
           </p>
         </form>
       </div>

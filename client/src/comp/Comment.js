@@ -40,11 +40,12 @@ export default function Comment(props){
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
+        background:"#ffffff"
       }}
       noValidate
       autoComplete="off"
     >
-      <TextField style={{color:"#ffffff"}}onChange={handleChange} id="comments" label="Enter Text" variant="outlined" />
+      <TextField style={{color:"#ffffff"}} onChange={handleChange} id="comments" label="Enter Text" variant="outlined" />
       <Button onClick={()=>props.hc(comment)} variant="contained">Comment</Button>
     </Box>
    <br/>
@@ -60,7 +61,7 @@ export default function Comment(props){
         <div className="preview-item border-bottom">
           <div className="preview-thumbnail">
             <img
-              src="assets/images/faces/face11.jpg"
+              src="user.png"
               alt="image"
               className="rounded-circle"
             />

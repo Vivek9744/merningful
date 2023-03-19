@@ -67,7 +67,7 @@ export default function Otp(props) {
               
                 <p className="terms">
                   By creating an account you are accepting our
-                  <a href="#"> Terms &amp; Conditions</a>
+                  <a> Terms &amp; Conditions</a>
                 </p>
               </form>
             </div>
