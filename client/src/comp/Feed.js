@@ -209,7 +209,7 @@ async function handleSearchPost(){
                 <div className="preview-item p-0">
                   <div className="preview-thumbnail">
                     <img
-                      src="assets/images/faces/face12.jpg"
+                      src="user.png"
                       className="rounded-circle"
                       alt=""
                     />
@@ -217,7 +217,7 @@ async function handleSearchPost(){
                   <div className="preview-item-content d-flex flex-grow">
                     <div className="flex-grow">
                       <div className="d-flex d-md-block d-xl-flex justify-content-between">
-                        <h6 style={{color:"green"}}className="preview-subject">{item.user}</h6>
+                        <h6 style={{color:"green"}}className="preview-subject">{item.user.substring(0,item.user.indexOf('@'))}</h6>
                         <p className="text-muted text-small">{item.time}</p>
                       </div>
                       <p className="text-muted">

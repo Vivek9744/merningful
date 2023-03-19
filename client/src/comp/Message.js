@@ -40,6 +40,13 @@ const [m,setM]=React.useState([])
     setSS(old=>{
       return([s,...old])})
     console.log(socket)
+    const code= await getMessages(p)
+      console.log(code.response.data)
+
+   
+     
+      setM(code.response.data.reverse())
+   
     }
   React.useEffect(()=>{
     const ev1= async(data)=>{
@@ -149,7 +156,7 @@ const [m,setM]=React.useState([])
             
           <div class="flex justify-start mb-4">
                 <img
-                  src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
+                  src="user.png"
                   class="object-cover h-8 w-8 rounded-full"
                   alt=""
                 />
@@ -171,7 +178,7 @@ const [m,setM]=React.useState([])
                   {item.content}
                 </div>
                 <img
-                  src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
+                  src="user.png"
                   class="object-cover h-8 w-8 rounded-full"
                   alt=""
                 />
