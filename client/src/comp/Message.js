@@ -11,8 +11,8 @@ import Load from './Load'
 import ReactDOM from 'react-dom/client';
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
-//const socket=io.connect("http://localhost:8000")
-const socket=io.connect("chatrmn.eu-4.evennode.com")
+const socket=io.connect("http://localhost:8003")
+//const socket=io.connect("chatrmn.eu-4.evennode.com")
 
 export default function Message(props) {
     
