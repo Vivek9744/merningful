@@ -1,23 +1,14 @@
 const nodemailer=require("nodemailer")
+require("dotenv").config();
 const sendEmail=async(subjects,message,send_to,send_from,reply_to)=>{
 
     const transporter =nodemailer.createTransport({
-/*
-       host:"smtp-mail.outlook.com",
+
+        host:process.env.HOST,
         port:"587",
         auth:{
-            user:"rmnprj@hotmail.com",
-            pass:'raman123',
-        },
-        tls:{
-            rejectUnauthorized:false,
-        }
-        */
-        host:"smtp.gmail.com",
-        port:"587",
-        auth:{
-            user:"collegeconnect121@gmail.com",
-            pass:'gvkptbzibjbjxdij',
+            user:process.env.EMAIL,
+            pass:process.env.PASS,
         },
         tls:{
             rejectUnauthorized:false,

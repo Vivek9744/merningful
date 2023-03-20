@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
-const DB="mongodb+srv://mern1:mernraman@cluster0.lykrowe.mongodb.net/mern1?retryWrites=true&w=majority"
+require("dotenv").config();
+const DB=process.env.DB
 mongoose.connect(DB,{
     useNewUrlParser:true,
     useUnifiedTopology:true

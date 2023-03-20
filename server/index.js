@@ -32,14 +32,14 @@ const users=require('./models/userSchema')
 
 const router=require('./routes/routes')
 
-const port=8003;
+const port=process.env.PORT;
 app.use(cors())
 app.use(express.json())
 app.use(router)
 const io=new Server(server,{
     cors:{
         //https://socketrmn1.netlify.app/
-        origin:["http://192.168.109.6:3000","http://localhost:3000","http://socketrmn.epizy.com","https://socketrmn1.netlify.app","https://rmnprj.000webhostapp.com/"],
+        origin:["http://192.168.109.6:3000","http://localhost:3000","http://socketrmn.epizy.com","https://socketrmn1.netlify.app","https://rmnprj.000webhostapp.com/","http://collegeconnnect.epizy.com"],
         method:["GET","POST"],
 
     },
