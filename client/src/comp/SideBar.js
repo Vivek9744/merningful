@@ -352,6 +352,36 @@ export default function SideBar(props) {
               <div className="dropdown-divider" />
             
               <div className="dropdown-divider" />
+              <a  onClick={Fee}  className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-dark rounded-circle">
+                    <i className="mdi mdi-playlist-play" />
+                  </div>
+                </div>
+                <div  className="preview-item-content">
+                  <p className="preview-subject mb-1">Feeds</p>
+                </div>
+              </a>
+              <a  onClick={Friends}  className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-dark rounded-circle">
+                    <i className="mdi mdi-contacts" />
+                  </div>
+                </div>
+                <div  className="preview-item-content">
+                  <p className="preview-subject mb-1">Friends</p>
+                </div>
+              </a>
+              <a  onClick={handleAbout}  className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-dark rounded-circle">
+                    <i className="mdi mdi-chart-bar" />
+                  </div>
+                </div>
+                <div  className="preview-item-content">
+                  <p className="preview-subject mb-1">About Us</p>
+                </div>
+              </a>
               <a  onClick={props.log}  className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
                   <div className="preview-icon bg-dark rounded-circle">
@@ -362,6 +392,7 @@ export default function SideBar(props) {
                   <p className="preview-subject mb-1">Log out</p>
                 </div>
               </a>
+              
               
             </div>
           </li>
