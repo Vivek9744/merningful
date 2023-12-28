@@ -86,12 +86,7 @@ function func(){
        
           </div>
           <div className="d-flex">
-            <button className="btn btn-facebook mr-2 col">
-              <i className="mdi mdi-facebook" /> Facebook{" "}
-            </button>
-            <button className="btn btn-google col">
-              <i className="mdi mdi-google-plus" /> Google plus{" "}
-            </button>
+           
           </div>
           <p className="sign-up">
             Don't have an Account?<a> Sign Up</a>

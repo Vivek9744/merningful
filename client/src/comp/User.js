@@ -113,7 +113,7 @@ console.log(search)
     <div id="load"></div>
          
   {
-                users.map(item=>{
+                users.reverse().map(item=>{
                     const k="https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     var t;
                     if(item.picture===k || item.picture==="gfgh"){

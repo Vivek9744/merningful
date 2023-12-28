@@ -33,7 +33,8 @@ import QRCode from "react-qr-code";
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
 
 
-const socket=io.connect("chatrmn.eu-4.evennode.com")
+//const socket=io.connect("chatrmn.eu-4.evennode.com")
+const socket=io.connect("http://localhost:8003")
 
 function App() {
   const navigate = useNavigate();

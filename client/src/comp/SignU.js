@@ -108,12 +108,7 @@ console.log(props.props)
                   <div id="mess"></div>
                 </div>
                 <div className="d-flex">
-                  <button className="btn btn-facebook col mr-2">
-                    <i className="mdi mdi-facebook" /> Facebook{" "}
-                  </button>
-                  <button className="btn btn-google col">
-                    <i className="mdi mdi-google-plus" /> Google plus{" "}
-                  </button>
+                
                 </div>
                 <p className="sign-up text-center">
                   Already have an Account?<a href="#"> Sign Up</a>
