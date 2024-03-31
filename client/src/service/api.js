@@ -1,7 +1,7 @@
 import axios from "axios"
-//const URL="http://localhost:8003"
+const URL="http://localhost:8003"
 //const URL="https://collegeconnect1.onrender.com"
-const URL="https://college-connect.azurewebsites.net"
+//const URL="https://college-connect.azurewebsites.net"
 export const addUser=async (data)=>{
     try{
         return await axios.post(`${URL}/register`,data)
