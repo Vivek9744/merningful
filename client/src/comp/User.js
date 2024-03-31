@@ -151,8 +151,8 @@ export default function User(props) {
   alt=""
   style={{ height: "5vw" }}
 />
-<button style={{borderRadius:'20px', background: 'linear-gradient(45deg, #ff7300, #eaecc6)'}} id={item.email} onClick={handleMessage} className="text-gray-800 bg-indigo-500 hover:bg-indigo-700 ">Message</button><br />
-<button style={{borderRadius:'20px', background: 'linear-gradient(45deg, #ff7300, #eaecc6)'}} onClick={() => handleProfile(item)} className=" mx-auto mt-6 text-gray-800 bg-indigo-500 hover:bg-indigo-700 ">View Profile</button>
+<button style={{borderRadius:'10px', background: 'linear-gradient(45deg, #429bf5, #dcebfa)'}} id={item.email} onClick={handleMessage} className="text-gray-800 mx-2 w-1/2 bg-indigo-500 hover:bg-indigo-700 ">Message</button><br />
+<button style={{borderRadius:'10px', background: 'linear-gradient(45deg, #ff7300, #eaecc6)'}} onClick={() => handleProfile(item)} className=" mx-auto w-1/2 text-gray-800 bg-indigo-500 hover:bg-indigo-700 ">View Profile</button>
 
                         </div>
                       </div>
