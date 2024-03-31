@@ -1,3 +1,7 @@
+const users = require('../models/userSchema')
+
+const feed1 = require("../models/feedSchema")
+
 const post=async (req, res) => {
     console.log(req.body);
     const { head, body, hashtag, time, user, likes, comments } = req.body

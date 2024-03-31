@@ -1,3 +1,12 @@
+const users = require('../models/userSchema')
+
+var validator = require("email-validator");
+
+const { passwordStrength } = require('check-password-strength')
+const sendEmail = require('../utils/sendEmail')
+const bcrypt = require('bcryptjs')
+
+const otp = require("../models/otpSchema")
 const register1=async (req, res) => {
     console.log(req.body);
     var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;

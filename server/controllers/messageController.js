@@ -1,3 +1,6 @@
+
+const messages = require('../models/messageSchema')
+
 const message= async (req, res) => {
     console.log(req.body);
     const { content, from, to, time } = req.body
