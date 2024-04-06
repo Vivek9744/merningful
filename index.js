@@ -24,8 +24,8 @@ const http=require("http")
 const {Server}=require('socket.io')
 const server=http.createServer(app)
 require("dotenv").config();
+console.log(process.env.DB)
 
-console.log("hiiii");
 const mongoose=require('mongoose');
 const conn=require('./db/conn.js')
 const users=require('./models/userSchema')
@@ -41,6 +41,7 @@ const io=new Server(server,{
         //https://socketrmn1.netlify.app/
         origin:["http://192.168.109.6:3000","http://localhost:3000","http://socketrmn.epizy.com","https://socketrmn1.netlify.app","https://rmnprj.000webhostapp.com/","http://collegeconnnect.epizy.com"],
         method:["GET","POST"],
+
     },
 })
 io.on("connection",(socket)=>{
@@ -56,4 +57,5 @@ io.on("connection",(socket)=>{
 })
 server.listen(port,()=>{
     console.log("Server is running hello")
+  
 })
