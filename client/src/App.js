@@ -6,10 +6,10 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import NavBar from './NavBar'
+import Dummy from './comp/Dummy'
 import SideBar from './comp/SideBar'
 import SideBar1 from './comp/SideBar1'
 import jwt_decode from 'jwt-decode'
-
 import {addUser} from "./service/api"
 import {addUser2} from "./service/api"
 import {addUser3} from "./service/api"
@@ -25,8 +25,7 @@ import SideBarH from './comp/SidebarH'
 import {LoginSocialFacebook} from 'reactjs-social-login'
 import {FacebookLoginButton} from 'react-social-login-buttons'
 import Otp from './comp/Otp'
-
-
+import Makeclub from './comp/Makeclub';
 import QRCode from "react-qr-code";
 
 //const socket=io.connect("http://172.31.139.237:3001/")
@@ -59,11 +58,9 @@ const k={
   "token":Img.aud,
 "given_name":Img.given_name,
 "family_name":Img.family_name,
-
 "name":Img.name,
 "email":Img.email,
 "picture":Img.picture,
-
 }
 console.log(k)
 await addUser3({
@@ -161,36 +158,25 @@ root.render(
         navigate("/dashboard")
         const root = ReactDOM.createRoot(
           document.getElementById('main')
-        );
-        
+        );    
         root.render(
           <>
           <Feed see={handleSeeMore} props={Img}/>
           </>
-        );
-      
-       
+        );   
      }else{
     console.log("not Submitted")
     const root = ReactDOM.createRoot(
       document.getElementById('mess')
     );
-    
     root.render(
       <>
       Error
       </>
     );}
-
-
-
     */
-
 }
 async function handleO(user){
-  
-
-
   const root = ReactDOM.createRoot(
     document.getElementById('mess')
   );
@@ -239,40 +225,7 @@ async function handleO(user){
     );
    }
     
-    /*
-    console.log(await addUser())
-   const code= await addUser(k)
-
-   if(Object.keys(code.response.data).length===0){
-      console.log("submitted")
-      setImg(k)
-      navigate("/dashboard")
-      const root = ReactDOM.createRoot(
-        document.getElementById('main')
-      );
-      
-      root.render(
-        <>
-        <Feed see={handleSeeMore} props={Img}/>
-        </>
-      );
-    
-     
-   }else{
-  console.log("not Submitted")
-  const root = ReactDOM.createRoot(
-    document.getElementById('mess')
-  );
-  
-  root.render(
-    <>
-    Error
-    </>
-  );}
-
-
-
-  */
+   
 
 
 
@@ -339,9 +292,7 @@ async function handleSignIn(user){
    }
 
    console.log(load)
-
-  
-  
+ 
 }
 function handleSeeMore(event){
    console.log("djdhh")
@@ -354,8 +305,6 @@ function handleSeeMore(event){
       <Post user={Img} data={event}/>
       </>
     );
-    
-  
   }
 const fb=async(response)=>{
   console.log(response);
@@ -374,11 +323,9 @@ const fb=async(response)=>{
     "token":`$12rmn##{response.data.accessToken}`,
   "given_name":response.data.first_name,
   "family_name":response.data.last_name,
-  
   "name":response.data.name,
   "email":`ram${response.data.userID}@gmail.com`,
   "picture":response.data.picture.data.url,
-  
   })
   console.log({
     "token":`$12rmn##{response.data.accessToken}`,
@@ -388,26 +335,20 @@ const fb=async(response)=>{
   "name":response.data.name,
   "email":`ram${response.data.userID}@gmail.com`,
   "picture":response.data.picture.data.url,
-  
   })
 navigate("/dashboard")
 console.log(Img)
-
-
  }
- 
   return (
     <div style={{background:"#000000"}}className="App">
- <div id="home">
-
-  
-    
+ <div id="home">    
     <Routes>
      <Route path="/" element={<SideBarH otp={handleO} fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
-<Route path="/dashboard" element={<SideBar fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
-
-</Routes><button>
-{Object.keys(Img).length===0 &&<LoginSocialFacebook
+     <Route path="/dashboard" element={<SideBar fbb={fb} Img={Img} sifun={handleSignIn} sufun={handleSignUp} load={load} log={Log}/>} />
+     <Route path="/dummy" element={<Dummy/>}/>
+  </Routes>
+  {/* <button>
+   {Object.keys(Img).length===0 &&<LoginSocialFacebook
      appId="1832325630476306"
      onResolve={fb}
      onReject={(error)=>{
@@ -415,16 +356,11 @@ console.log(Img)
      }}
      >
       <FacebookLoginButton/>
-
-    
-      </LoginSocialFacebook>}</button>
-     
+      </LoginSocialFacebook>}
+      </button> */}
      </div>
      <div></div>
      <div id="sign"></div>
- 
-   
- 
     </div>
   );
 }

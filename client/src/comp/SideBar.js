@@ -8,6 +8,7 @@ import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Makeclub from './Makeclub';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -34,9 +35,6 @@ import Post from './Post'
 import About from './About'
 import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
-
-
-
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -45,7 +43,6 @@ const openedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -132,6 +129,7 @@ export default function SideBar(props) {
     );
 
   }
+  
  
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -190,24 +188,18 @@ export default function SideBar(props) {
     );
   }
   function handleSeeMore(event){
-  
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
-    
     root.render(
       <>
       <Post user={props.Img}data={event}/>
       </>
     );
-    
-  
   }
   async function handleLike(event){
    // await addLike({"id":event,"user":props.props.email})
-    
 }
-
   return (<div className="container-scroller">
   {/* partial:partials/_sidebar.html */}
   <nav className="sidebar sidebar-offcanvas" id="sidebar">
@@ -227,6 +219,7 @@ export default function SideBar(props) {
               <img
                 className="img-xs rounded-circle "
                 src={props.Img.picture}
+              
                 alt=""
               />
               <span className="count bg-success" />
@@ -390,7 +383,7 @@ export default function SideBar(props) {
                 </div>
                 <div  className="preview-item-content">
                   <p className="preview-subject mb-1">Log out</p>
-                </div>
+                rf</div>
               </a>
               
               
@@ -412,13 +405,6 @@ export default function SideBar(props) {
        
 <div id="main"> {Object.keys(props.Img).length===0  ? <SideBar1 fbb={props.fbb}  log={props.log}Img={props.Img} />:<Feed see={handleSeeMore} props={props.Img}/>}
 </div>
-
-
-
-
-
-       
-       
       </div>
       {/* content-wrapper ends */}
       {/* partial:partials/_footer.html */}
