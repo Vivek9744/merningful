@@ -220,18 +220,21 @@ const createclub = async (req, res) => {
     console.log("hiiii"); // Corrected typo
 
     try {
-        const { clubName, description } = req.body;
+        const { clubName, description } = req.body; // Changed clubDescription to description
         const newClub = new club({
             clubName: clubName,
-            description: description
+            description: description // Changed clubDescription to description
         });
+        console.log("hiiiiiiiiiiiiiiiiiiii");
         await newClub.save();
+        console.log("giiiiii");
         res.status(201).json({ message: "Club created successfully", club: newClub });
     } catch (error) {
         console.error("Error creating club:", error);
         res.status(500).json({ message: "Failed to create club", error: error });
     }
 };
+
 
 module.exports = {
     post,

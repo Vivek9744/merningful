@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import axios for making HTTP requests
+
 import {
   Slider,
   Tab,
@@ -11,7 +13,6 @@ import {
 } from "@mui/material";
 import { TextField, Button, List, ListItem, ListItemText } from "@mui/material";
 import { ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
-
 function ClubManagement() {
   const [value, setValue] = useState(0);
   const [clubName, setClubName] = useState("");
@@ -22,11 +23,22 @@ function ClubManagement() {
   const handleChangeTabs = (event, newValue) => {
     setValue(newValue);
   };
-  const handleCreateClub = () => {
-    // Logic to create the club
+  const handleCreateClub = async () => {
     console.log("Club Name:", clubName);
     console.log("Club Description:", clubDescription);
+    try {
+      const response = await axios.post("http://localhost:8003/createclub", {
+        clubName:clubName, description:clubDescription
+      });
+      console.log("Club created successfully!", response.data);
+      // Clear the form fields after successful club creation
+      setClubName("");
+      setClubDescription("");
+    } catch (error) {
+      console.error("Error creating club:", error);
+    }
   };
+  
   return (
     <div className="container mx-auto text-center mt-10" style={{ background: "#f5f5f5", minHeight: "100vh" }}>
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 italic text-white p-3 rounded-lg shadow-lg text-center font-bold text-4xl">
