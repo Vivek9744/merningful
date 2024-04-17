@@ -88,7 +88,7 @@ const [ls,setLs]=React.useState(true)
 async function handleLike(event){
     await addLike({"id":event,"user":props.props.email})
     let response=await getPosts();
-
+ 
     setFposts(response.data)
 
 

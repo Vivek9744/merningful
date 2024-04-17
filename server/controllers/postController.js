@@ -1,7 +1,7 @@
 const users = require('../models/userSchema')
 
 const feed1 = require("../models/feedSchema")
-
+const club=require("../models/clubschema")
 const post=async (req, res) => {
     console.log(req.body);
     const { head, body, hashtag, time, user, likes, comments } = req.body
@@ -215,6 +215,36 @@ const fetchProfilePosts=async (req, res) => {
     }
 
 }
-module.exports={post,fetchPosts,search,comment,updateComment,updateLikes,likeStatus,fetchComments,searchPost
+const createclub = async (req, res) => {
+    console.log(req.body);
+    console.log("hiiii"); // Corrected typo
 
-,seePost,fetchProfilePosts}
+    try {
+        const { clubName, description } = req.body;
+        const newClub = new club({
+            clubName: clubName,
+            description: description
+        });
+        await newClub.save();
+        res.status(201).json({ message: "Club created successfully", club: newClub });
+    } catch (error) {
+        console.error("Error creating club:", error);
+        res.status(500).json({ message: "Failed to create club", error: error });
+    }
+};
+
+module.exports = {
+    post,
+    fetchPosts,
+    search,
+    comment,
+    updateComment,
+    updateLikes,
+    likeStatus,
+    fetchComments,
+    searchPost,
+    seePost,
+    fetchProfilePosts,
+    createclub
+};
+

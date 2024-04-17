@@ -47,7 +47,6 @@ export default function Message(props) {
 
 
     setM(code.response.data.reverse())
-
   }
   React.useEffect(() => {
     const ev1 = async (data) => {

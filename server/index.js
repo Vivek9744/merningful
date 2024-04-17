@@ -12,6 +12,7 @@ console.log(bcrypt.compareSync("raman1",secPas))
 console.log(bcrypt.compareSync("raman",secPas2))
 }
 */
+console.log("here");
 
 
 

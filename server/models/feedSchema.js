@@ -18,7 +18,6 @@
 */
 const mongoose=require('mongoose');
 const postSchema=new mongoose.Schema({
-   
     head:{
         type:String,
         required:true
@@ -26,7 +25,6 @@ const postSchema=new mongoose.Schema({
     body:{
         type:String,
         required:true,
-       
     },
     time:{
         type:String,
