@@ -236,10 +236,10 @@ const createclub = async (req, res) => {
 };
 const showclub = async (req, res) => {
     try {
-        console.log("svsvssv");
+        console.log("ssssssssssssss");
         const { user } = req.body;
-        // Find clubs where the user is not present in the members array
         const clubs = await club.find({ members: { $not: { $elemMatch: { $eq: user } } } });
+        console.log(clubs);
         res.status(200).json(clubs);
     } catch (error) {
         console.error("Error fetching clubs:", error);

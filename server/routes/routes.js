@@ -41,5 +41,5 @@ router.post("/seePost", postController.seePost);
 
 router.post("/fetchProfilePosts", postController.fetchProfilePosts);
 router.post("/createclub",postController.createclub);
-router.get("/showclub",postController.showclub);
+router.post("/showclub",postController.showclub);
 module.exports = router;
