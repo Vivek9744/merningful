@@ -137,7 +137,9 @@ export default function SideBar(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
+  function handleClubs() {
+    navigate("/dummy");
+  }
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -274,6 +276,14 @@ export default function SideBar(props) {
             <i className="mdi mdi-chart-bar" />
           </span>
           <span className="menu-title">About Us</span>
+        </a>
+      </li>
+      <li  onClick={handleClubs} className="nav-item menu-items">
+        <a className="nav-link">
+          <span className="menu-icon">
+            <i className="mdi mdi-chart-bar" />
+          </span>
+          <span className="menu-title">Handle Clubs</span>
         </a>
       </li>
       <li onClick={props.log} className="nav-item menu-items">

@@ -1,10 +1,6 @@
+const mongoose = require('mongoose');
 
-
-
-
-
-const mongoose=require('mongoose');
-const clubSchema=new mongoose.Schema({
+const clubSchema = new mongoose.Schema({
     clubName: {
         type: String,
         required: true
@@ -12,7 +8,21 @@ const clubSchema=new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    leader: {
+        type: String,
+        required: true
+    },
+    coLeader: {
+        type: [String], // Array of strings
+        required: true
+    },
+    members: {
+        type: [String], // Array of strings
+        required: true
     }
 });
-const club=new mongoose.model("club",clubSchema);
-module.exports=club
+
+const Club = mongoose.model("Club", clubSchema);
+
+module.exports = Club;

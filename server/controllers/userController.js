@@ -1,11 +1,8 @@
 const users = require('../models/userSchema')
-
 var validator = require("email-validator");
-
 const { passwordStrength } = require('check-password-strength')
 const sendEmail = require('../utils/sendEmail')
 const bcrypt = require('bcryptjs')
-
 const otp = require("../models/otpSchema")
 const register1=async (req, res) => {
     console.log(req.body);
@@ -13,12 +10,10 @@ const register1=async (req, res) => {
     const { name, email, given_name, picture, token, family_name } = req.body
     var pass = `QN@#m${token}`
     var m = 1;
-
     console.log(name)
     if (validator.validate(email)) {
         if (passwordStrength(pass).value === 'Strong' || passwordStrength(pass).value === 'Medium') {
             try {
-
                 const preuser = await users.findOne({ email: email })
                 console.log(preuser)
                 if (preuser) {

@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {User} from './context/User'
 import io from 'socket.io-client'
 import React, { useCallback } from "react"
 import TextField from '@mui/material/TextField';
@@ -27,6 +28,7 @@ import {FacebookLoginButton} from 'react-social-login-buttons'
 import Otp from './comp/Otp'
 import Makeclub from './comp/Makeclub';
 import QRCode from "react-qr-code";
+import  { createContext, useState, useContext } from "react";
 
 //const socket=io.connect("http://172.31.139.237:3001/")
 //const socket=io.connect("https://mern1-8ka4.onrender.com/")
@@ -42,9 +44,9 @@ function App() {
   var userObject
   const [Img,setImg]=React.useState({})
   async function handleCallbackResponse(response){
-console.log(response.credential)
+// console.log(response.credential)
 userObject=jwt_decode(response.credential)
-console.log(userObject)
+// console.log(userObject)
 setImg(userObject)
 
 navigate("/dashboard")
@@ -53,7 +55,7 @@ navigate("/dashboard")
 
 
 document.getElementById("hide").hidden=true;
-console.log(Img.aud)
+// console.log(Img.aud)
 const k={
   "token":Img.aud,
 "given_name":Img.given_name,
@@ -62,7 +64,8 @@ const k={
 "email":Img.email,
 "picture":Img.picture,
 }
-console.log(k)
+console.log("vive");
+console.log(k);
 await addUser3({
   "token":userObject.aud,
 "given_name":userObject.given_name,
@@ -122,15 +125,16 @@ root.render(
       "picture":"https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       
       }
-      console.log(k)
+      console.log("vivekkkkk");
+      console.log(Img.Img)
       const code= await addUser(k)
-  console.log(code)
-  console.log(code.data)
+  // console.log(code)
+  // console.log(code.data)
      if(code.data===2){
       const root = ReactDOM.createRoot(
         document.getElementById('main')
       );
-      console.log("otp created")
+      // console.log("otp created")
       
       root.render(
         <>
@@ -138,7 +142,7 @@ root.render(
         </>
       );
      }else{
-      console.log("not Submitted")
+      // console.log("not Submitted")
       const root = ReactDOM.createRoot(
         document.getElementById('mess')
       );
@@ -148,33 +152,7 @@ root.render(
         Error {code.response.data}
         </>)}
       
-      /*
-      console.log(await addUser())
-     const code= await addUser(k)
-  
-     if(Object.keys(code.response.data).length===0){
-        console.log("submitted")
-        setImg(k)
-        navigate("/dashboard")
-        const root = ReactDOM.createRoot(
-          document.getElementById('main')
-        );    
-        root.render(
-          <>
-          <Feed see={handleSeeMore} props={Img}/>
-          </>
-        );   
-     }else{
-    console.log("not Submitted")
-    const root = ReactDOM.createRoot(
-      document.getElementById('mess')
-    );
-    root.render(
-      <>
-      Error
-      </>
-    );}
-    */
+     
 }
 async function handleO(user){
   const root = ReactDOM.createRoot(
@@ -188,20 +166,18 @@ async function handleO(user){
   );
   const k={
     "otp5":user.otp5,
-      "token":user.token,
+    "token":user.token,
     "given_name":user.given_name,
     "family_name":user.family_name,
-    
     "name":`${user.given_name}${user.family_name}`,
     "email":user.email,
     "picture":"https://images.pexels.com/photos/360591/pexels-photo-360591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    
     }
-    console.log(k)
+    // console.log(k)
     const code=  await addUser2(k)
-    console.log(code)
+    // console.log(code)
    if(code.data===2){
-    console.log("submitted")
+    // console.log("submitted")
     setImg(k)
     navigate("/dashboard")
     const root = ReactDOM.createRoot(
@@ -232,7 +208,7 @@ async function handleO(user){
 }
 function hand(){
  
-  console.log(load)
+  // console.log(load)
 }
 async function handleSignIn(user){
 
@@ -245,28 +221,25 @@ async function handleSignIn(user){
     <Load/>
     </>
   );
-  console.log("hhh")
+  // console.log("hhh")
   setLoad("1")
-  console.log(load)
-  console.log("raman")
+  // console.log(load)
+  // console.log("raman")
 
   const k={
       "token":user.token,
     "given_name":"l",
     "family_name":"l",
-    
     "name":"k",
     "email":user.email,
     "picture":"gfgh",
-    
     }
-    console.log(k)
-    console.log(await isUser())
+    // console.log(k)
+    // console.log(await isUser())
    const code= await isUser(k)
-
    if((code.response.data)===0){
-      console.log("Please check your credential")
-      console.log(code.response.data)
+      // console.log("Please check your credential")
+      // console.log(code.response.data)
       const root = ReactDOM.createRoot(
         document.getElementById('mess')
       );
@@ -291,15 +264,15 @@ async function handleSignIn(user){
     );
    }
 
-   console.log(load)
+  //  console.log(load)
  
 }
 function handleSeeMore(event){
-   console.log("djdhh")
+  //  console.log("djdhh")
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
-    console.log(Img)
+    // console.log(Img)
     root.render(
       <>
       <Post user={Img} data={event}/>
@@ -307,7 +280,7 @@ function handleSeeMore(event){
     );
   }
 const fb=async(response)=>{
-  console.log(response);
+  // console.log(response);
   setImg({
     "token":`$12rmn##{response.data.accessToken}`,
   "given_name":response.data.first_name,
@@ -318,7 +291,7 @@ const fb=async(response)=>{
   "picture":response.data.picture.data.url,
   
    })
-  console.log()
+  // console.log()
   await addUser3({
     "token":`$12rmn##{response.data.accessToken}`,
   "given_name":response.data.first_name,
@@ -327,19 +300,20 @@ const fb=async(response)=>{
   "email":`ram${response.data.userID}@gmail.com`,
   "picture":response.data.picture.data.url,
   })
-  console.log({
-    "token":`$12rmn##{response.data.accessToken}`,
-  "given_name":response.data.first_name,
-  "family_name":response.data.last_name,
+  // console.log({
+  //   "token":`$12rmn##{response.data.accessToken}`,
+  // "given_name":response.data.first_name,
+  // "family_name":response.data.last_name,
   
-  "name":response.data.name,
-  "email":`ram${response.data.userID}@gmail.com`,
-  "picture":response.data.picture.data.url,
-  })
+  // "name":response.data.name,
+  // "email":`ram${response.data.userID}@gmail.com`,
+  // "picture":response.data.picture.data.url,
+  // })
 navigate("/dashboard")
-console.log(Img)
+// console.log(Img)
  }
   return (
+    <User.Provider value={{Img,setImg}}>
     <div style={{background:"#000000"}}className="App">
  <div id="home">    
     <Routes>
@@ -362,7 +336,7 @@ console.log(Img)
      <div></div>
      <div id="sign"></div>
     </div>
+    </User.Provider>
   );
 }
-
 export default App;

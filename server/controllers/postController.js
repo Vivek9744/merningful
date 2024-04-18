@@ -218,12 +218,12 @@ const fetchProfilePosts=async (req, res) => {
 const createclub = async (req, res) => {
     console.log(req.body);
     console.log("hiiii"); // Corrected typo
-
     try {
-        const { clubName, description } = req.body; // Changed clubDescription to description
+        const { clubName, description, leader } = req.body; // Changed clubDescription to description
         const newClub = new club({
             clubName: clubName,
-            description: description // Changed clubDescription to description
+            description: description, // Changed clubDescription to description
+            leader: leader
         });
         console.log("hiiiiiiiiiiiiiiiiiiii");
         await newClub.save();
@@ -234,8 +234,18 @@ const createclub = async (req, res) => {
         res.status(500).json({ message: "Failed to create club", error: error });
     }
 };
-
-
+const showclub = async (req, res) => {
+    try {
+        console.log("svsvssv");
+        const { user } = req.body;
+        // Find clubs where the user is not present in the members array
+        const clubs = await club.find({ members: { $not: { $elemMatch: { $eq: user } } } });
+        res.status(200).json(clubs);
+    } catch (error) {
+        console.error("Error fetching clubs:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
 module.exports = {
     post,
     fetchPosts,
@@ -248,6 +258,7 @@ module.exports = {
     searchPost,
     seePost,
     fetchProfilePosts,
-    createclub
+    createclub,
+    showclub
 };
 

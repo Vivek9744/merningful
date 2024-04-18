@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios"; // Import axios for making HTTP requests
+import { useNavigate } from "react-router-dom";
+// import { User } from "./App";
+import { useContext } from "react";
 
+import {User} from '../context/User'
 import {
   Slider,
   Tab,
@@ -14,21 +18,47 @@ import {
 import { TextField, Button, List, ListItem, ListItemText } from "@mui/material";
 import { ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
 function ClubManagement() {
+  const {Img}=useContext(User)
+
+  // console.log("vivek",Img);
   const [value, setValue] = useState(0);
   const [clubName, setClubName] = useState("");
   const [clubDescription, setClubDescription] = useState("");
+  const [data, setData] = useState([]);
   const handleChangeSlider = (event, newValue) => {
     setValue(newValue);
   };
   const handleChangeTabs = (event, newValue) => {
     setValue(newValue);
   };
+  useEffect(() => {
+    // console.log(Img.email);
+    const fetchClubs = async () => {
+      try {
+        console.log(Img.email);
+        const response = await axios.post("http://localhost:8003/showclub", {user: Img.email});
+        setData(response.data); // Update state with fetched clubs
+      } catch (error) {
+        console.error("Error fetching clubs:", error);
+      }
+    };
+    fetchClubs();
+  }, []);
+   // Hook for navigation
+   const navigate = useNavigate();
+  const handleBackToDashboard = () => {
+    navigate("/dashboard"); // Navigate to /dashboard route when the back button is clicked
+  };
   const handleCreateClub = async () => {
     console.log("Club Name:", clubName);
     console.log("Club Description:", clubDescription);
-    try {
+    console.log("viv",Img.email)
+    
+    try {    console.log(Img.email)
+
       const response = await axios.post("http://localhost:8003/createclub", {
-        clubName:clubName, description:clubDescription
+        
+        clubName:clubName, description:clubDescription,leader: Img.email
       });
       console.log("Club created successfully!", response.data);
       // Clear the form fields after successful club creation
@@ -38,8 +68,8 @@ function ClubManagement() {
       console.error("Error creating club:", error);
     }
   };
-  
   return (
+    <>
     <div className="container mx-auto text-center mt-10" style={{ background: "#f5f5f5", minHeight: "100vh" }}>
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 italic text-white p-3 rounded-lg shadow-lg text-center font-bold text-4xl">
         CLUBS
@@ -125,12 +155,14 @@ function ClubManagement() {
         </TabPanel>
       </Box>
     </div>
+    <Button variant="contained" color="primary" onClick={handleBackToDashboard}>
+          Back to Dashboard
+        </Button>
+    </>
   );
 }
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -141,7 +173,7 @@ function TabPanel(props) {
     >
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
+    
   );
 }
-
 export default ClubManagement;

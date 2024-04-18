@@ -3,25 +3,19 @@ import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
-
 import SideBar1 from './SideBar1'
-
 import ReactDOM from 'react-dom/client';
 import Profile from './Profile';
 import Feed from './Feed'
 import SignU from './SignU'
 import SignI from './SignI'
 import User from './User'
-
 import Post from './Post'
 import About from './About'
 import { useNavigate } from "react-router-dom";
 import logo from '../logo.jpg'
 import userlogo from '../user.png'
 const drawerWidth = 240;
-
-
-
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
@@ -30,7 +24,6 @@ const openedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -42,7 +35,6 @@ const closedMixin = (theme) => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -94,8 +86,8 @@ export default function SideBar(props) {
     if(Object.keys(props.Img).length===0)
     navigate("/")
   },[])
- 
-  console.log(props)
+   console.log("sssssssv");
+  console.log(props.Img)
  
   function ch(){
    
@@ -111,7 +103,6 @@ export default function SideBar(props) {
     const root = ReactDOM.createRoot(
       document.getElementById('main')
     );
-    
     root.render(
       <Feed see={handleSeeMore} props={props.Img}/>
     );
@@ -187,6 +178,9 @@ export default function SideBar(props) {
     );
     
   
+  }
+  function handleClubs() {
+    navigate("/dummy");
   }
   function handleHome(){
     
@@ -284,6 +278,14 @@ export default function SideBar(props) {
           <span className="menu-title">About Us</span>
         </a>
       </li>
+      <li  onClick={handleClubs} className="nav-item menu-items">
+        <a className="nav-link">
+          <span className="menu-icon">
+            <i className="mdi mdi-chart-bar" />
+          </span>
+          <span className="menu-title">Handle Clubs</span>
+        </a>
+      </li>
      
     
      
@@ -302,6 +304,7 @@ export default function SideBar(props) {
   {/* partial */}
   <div className="container-fluid page-body-wrapper">
     {/* partial:partials/_navbar.html */}
+   
     <nav className="navbar p-0 fixed-top d-flex flex-row">
       <div className="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
         <a className="navbar-brand brand-logo-mini">
@@ -318,7 +321,6 @@ export default function SideBar(props) {
         </button>
         
         <ul className="navbar-nav navbar-nav-right">
-      
           <li className="nav-item dropdown">
             <a
               className="nav-link"
@@ -338,7 +340,6 @@ export default function SideBar(props) {
                 <i className="mdi mdi-menu-down d-none d-sm-block" />
               </div>
             </a>
-           
           </li>
         </ul>
         <button
@@ -356,15 +357,6 @@ export default function SideBar(props) {
     <SideBar1 fbb={props.fbb} log={props.log}Img={props.Img} />
 </div>
       <div className="content-wrapper">
-       
-
-
-
-
-
-
-       
-       
       </div>
       {/* content-wrapper ends */}
       {/* partial:partials/_footer.html */}
